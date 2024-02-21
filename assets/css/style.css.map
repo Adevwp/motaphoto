@@ -1,1 +1,1 @@
-{"version":3,"sourceRoot":"","sources":["../sass/footer.scss","../sass/style.scss"],"names":[],"mappings":"AAAA;AAEA;EACI;;;ACAJ;EACI;EACA","file":"style.css"}
+{"version":3,"sourceRoot":"","sources":["../sass/footer.scss","../sass/header.scss","../sass/style.scss"],"names":[],"mappings":";AAAA;AAEA;EACI;EACA;EACA;EACA;EACA;EACA;EACA;EACA;;;AAGJ;EACI;EACA;EACA;EACA;;;AAGJ;AAEA;AAAA;AAAA;AAAA;AAAA;ACtBA;EACI;;;AAIJ;AAGA;AAAA;AAAA;;AAAA;ACLA;AACA;EACI;EACA","file":"style.css"}

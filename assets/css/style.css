@@ -1,8 +1,40 @@
+@charset "UTF-8";
 /* FOOTER STYLE*/
-.menu-footer {
+.site-footer {
   background-color: pink;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border-top: 1px solid black;
+  height: 60px;
+  text-transform: uppercase;
 }
 
+.site-footer__menu {
+  display: flex;
+  flex-direction: row;
+  list-style-type: none;
+  padding: 0;
+}
+
+/* TODO mettre le tyexte en majusculke */
+/* TODO 
+Class non utilisée 
+.site-footer__menu
+.site-header__menu
+*/
+.site-header {
+  background-color: greenyellow;
+}
+
+/* TODO mettre le tyexte en majusculke */
+/* TODO 
+Class non utilisée 
+.site-header__logo 
+
+*/
+/* BODY STYLE */
 body {
   background-color: aqua;
   color: red;

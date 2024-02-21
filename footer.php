@@ -1,17 +1,17 @@
     <!-- FOOTER -->
     <!-- TODO test footer -->
 
-    <footer>
-    <div class="menu-footer">
-        <nav>
-            <?php /*affiche mon menu footer */
-            wp_nav_menu([
-                'theme_location' => 'footer',
-            ]); 
-            ?>
-            <p> MON FOOTER ICI - Tous droits réservés</p>
+    <footer class="site-footer">
+        <nav class="site-footer__menu">
+            <?php wp_nav_menu( // Call footer menu
+                array( 'theme_location' => 'footer', 
+                'container' => 'ul', // No div 
+                'menu_class' => 'site-footer__menu__ul', // custom class 
+                ) 
+            ); ?>
+
+            <p>Tous droits réservés</p>
         </nav>
-    </div>
     </footer>
 
 	<?php wp_footer(); ?>
