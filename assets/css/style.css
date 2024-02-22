@@ -8,17 +8,25 @@
   align-items: center;
   border-top: 1px solid black;
   height: 60px;
-  text-transform: uppercase;
+  gap: 20px;
 }
 
 .site-footer__menu {
   display: flex;
   flex-direction: row;
-  list-style-type: none;
   padding: 0;
 }
+.site-footer__menu ul {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  list-style: none;
+}
+.site-footer__menu a {
+  text-decoration: none;
+  color: #000;
+}
 
-/* TODO mettre le tyexte en majusculke */
 /* TODO 
 Class non utilisée 
 .site-footer__menu
@@ -26,18 +34,108 @@ Class non utilisée
 */
 .site-header {
   background-color: greenyellow;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.site-header ul {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  list-style: none;
+}
+.site-header a {
+  text-decoration: none;
+  color: #000;
 }
 
-/* TODO mettre le tyexte en majusculke */
 /* TODO 
 Class non utilisée 
 .site-header__logo 
 
 */
+@font-face {
+  font-family: "Poppins";
+  src: url("../fonts/poppins/Poppins-Light.woff2") format("woff2"), url("../fonts/Poppins-LightNomDeLaPolice.woff") format("woff");
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Poppins";
+  src: url("../fonts/poppins/Poppins-Light.woff2") format("woff2"), url("../fonts/Poppins-LightNomDeLaPolice.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Space Mono";
+  src: url("../fonts/space-mono/SpaceMono-Bold.woff2") format("woff2"), url("../fonts/space-mono/SpaceMono-Bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Space Mono";
+  src: url("../fonts/space-mono/SpaceMono-BoldItalic.woff2") format("woff2"), url("../fonts/space-mono/SpaceMono-BoldItalic.woff") format("woff");
+  font-weight: 700;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Space Mono";
+  src: url("../fonts/space-mono/SpaceMono-Italic.woff2") format("woff2"), url("../fonts/space-mono/SpaceMono-Italic.woff") format("woff");
+  font-weight: 400;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Space Mono";
+  src: url("../fonts/space-mono/SpaceMono-Regular.woff2") format("woff2"), url("../fonts/space-mono/SpaceMono-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
 /* BODY STYLE */
 body {
   background-color: aqua;
-  color: red;
+  color: #000;
+  max-width: 1440px;
+}
+
+/* Typography*/
+h1, h2, h3, .site-footer, .site-header, .site-footer p {
+  font-family: "Space Mono", monospace;
+  text-transform: uppercase;
+}
+
+h1, h2 {
+  font-style: italic;
+}
+
+h2, h3, .site-footer, .site-header, .site-footer p {
+  font-weight: 400;
+}
+
+h3, p, .site-footer, .site-header, .site-footer p {
+  font-style: normal;
+}
+
+h1 {
+  font-size: 6rem;
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 4.125rem;
+}
+
+h3 {
+  font-size: 1.125rem;
+}
+
+p {
+  font-family: "Poppins", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 300;
+}
+
+.site-footer, .site-header, .site-footer p {
+  font-size: 1rem;
 }
 
 /*# sourceMappingURL=style.css.map */

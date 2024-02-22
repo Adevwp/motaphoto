@@ -1,9 +1,22 @@
 .site-header{
     background-color: greenyellow;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    ul {
+        display: flex;
+        justify-content: center;
+        flex-direction: row;
+        list-style: none;
+    }
+
+    a {
+        text-decoration: none;
+        color: #000;
+    }
 }
 
-
-/* TODO mettre le tyexte en majusculke */
 
 
 /* TODO 
