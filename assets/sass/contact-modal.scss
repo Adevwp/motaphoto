@@ -1,0 +1,93 @@
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;  /*15% from the top and centered */
+    padding-top: 18px;
+    border: 3px solid #000;
+    width: 597px;
+    height: 810px;
+}
+
+/* The Close Button */
+.close {
+    color: #C4C4C4;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #FE5858;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Modal Body*/
+.modal-body {
+    padding: 2px 26px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+
+    input {
+        height: 40px;
+        width: 263px;
+        border-radius: 2px;
+        background: #D8D8D8;
+        border: solid #B8BBC2 1px;
+        margin-top: 0px;
+        padding: 8px 15px;
+        color: #000;
+        font-family: "Space Mono";
+        font-size: 0.875rem;
+        font-weight: 400;
+    }
+
+    textarea {
+        height: 210px;
+        width: 263px;
+        border-radius: 8px;
+        border: 1px solid #B8BBC2 ;
+    }
+
+    label {
+    color : #313144;
+    }
+}
+
+/*Contact form message */
+.wpcf7 form .wpcf7-response-output {
+    margin: -0.9em 0.5em 1em;
+    padding-right: 0.5em;
+    padding-left: 0.5em;;
+    font-size: 12px;
+    font-family: 'poppins';
+    text-align: center;
+    max-width: 275px;
+}
+
+.wpcf7 form.invalid .wpcf7-response-output {
+    border: 2px solid #FE5858;
+}
+
+.wpcf7-spinner {
+    display:none;
+}
