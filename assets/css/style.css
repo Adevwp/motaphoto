@@ -139,19 +139,37 @@ Class non utilisée
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 100%;
+  /*width: 100%;*/
+  background-color: violet;
+}
+.modal-body #wpcf7-f42-o1 {
+  background-color: beige;
+  margin-top: 10px;
 }
 .modal-body input {
   height: 40px;
   width: 263px;
-  border-radius: 2px;
-  background: #D8D8D8;
-  border: solid #B8BBC2 1px;
-  margin-top: 0px;
-  padding: 8px 15px;
+  border-radius: 8px;
+  border: 1px solid #B8BBC2;
+  /* margin-top: 0px;
+   padding: 8px 15px;*/
   color: #000;
-  font-family: "Space Mono";
+  font-family: "Poppins";
   font-size: 0.875rem;
+  font-weight: 500;
+}
+.modal-body input[type=submit] {
+  height: 50px;
+  border-radius: 2px;
+  background-color: #D8D8D8;
+  border-color: #D8D8D8;
+  /*display: flex;
+  justify-content: center;
+  align-content: center;*/
+  /* margin-top: -10px;
+   margin-bottom: 0px;*/
+  font-size: 14px;
+  font-family: "Space Mono";
   font-weight: 400;
 }
 .modal-body textarea {
