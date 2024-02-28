@@ -9,8 +9,6 @@
                 'menu_class' => 'site-footer__menu__ul', // custom class 
                 ) 
             ); ?>
-
-            <p>Tous droits réservés</p>
         </nav>
     </footer>
 
