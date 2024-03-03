@@ -57,11 +57,18 @@
 
         <div class="single-photo-info__image"> <!-- TODO À METTRE À JOUR single-photo__image -->  
 
-            <?php if ($photo_id) { // Vérifie si la photo existe
-            // Si le champ retourne l'ID de l'image, utilise wp_get_attachment_image_url
-            $photo_url = is_array($photo) ? wp_get_attachment_image_url($photo_id['id'], 'full') : $photo_id;
-            echo '<img src="' . esc_url($photo_url) . '" alt="Description" />';
-            } ?>
+            <?php 
+                if ($photo_id) {
+                    // Utilise l'ID pour obtenir l'URL de l'image
+                    $photo_url = wp_get_attachment_image_url($photo_id, 'full');
+
+                    // Récupère le texte alternatif
+                    $photo_alt = get_post_meta($photo_id, '_wp_attachment_image_alt', true);
+
+                    // Affiche l'image
+                    echo '<img src="' . esc_url($photo_url) . '" alt="' . esc_attr($photo_alt) . '" />';
+            }?>
+
        
     </div>
     
