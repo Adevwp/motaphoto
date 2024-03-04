@@ -70,9 +70,84 @@
             }?>
 
        
-    </div>
+        </div>
     
     </div>
+
+    <div class="single-photo-interaction"> <!-- TODO À METTRE À JOUR  -->  
+        <div class="single-photo-interaction__contact"> <!-- TODO .interesse -->
+            <p> Cette photo vous intéresse?</p><!-- TODO #single-contact -->
+            <button id="single-photo-interaction__contact_btn" type="button">Contact</button>
+        </div>
+        <div class="single-photo-interaction__navigation"> <!-- TODO .navigation -->
+            <div class="miniature">
+                <div class="miniature-photo">
+                    <?php $prev = motaphoto_request_photoMiniature('ASC'); ?>
+                    <?php if ($prev) { ?>
+                        <a href="<?php echo $prev['url'] ?>">
+                            <img class="miniature-prev" src="<?php echo $prev['img'][0] ?>">
+                        </a>
+                    <?php } ?>
+
+                    <?php $next = motaphoto_request_photoMiniature('DESC'); ?>
+                    <?php if ($next) { ?>
+                        <a href="<?php echo $next['url'] ?>">
+                            <img class="miniature-next" src="<?php echo $next['img'][0] ?>">
+                        </a>
+                    <?php } ?>
+                </div>
+                <div class="miniature-fleche">
+                    <?php $prev = motaphoto_request_photoMiniature('ASC'); ?>
+                    <?php if ($prev) { ?>
+                        <a href="<?php echo $prev['url'] ?>">
+                            <img class="arrow-prev" src="<?php echo get_template_directory_uri() . '\assets\images\arrow-left.svg'; ?> " alt="Photo précédente">
+                        </a>
+                    <?php } ?>
+
+                    <?php $next = motaphoto_request_photoMiniature('DESC'); ?>
+                    <?php if ($next) { ?>
+                        <a href="<?php echo $next['url'] ?>">
+                            <img class="arrow-next" src="<?php echo get_template_directory_uri() . '\assets\images\arrow-right.svg'; ?> " alt="Photo suivante">
+                        </a>
+                    <?php } ?>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- TODO Photo apparentée  -->
+    <div>
+        <?php
+            $term_list = wp_get_post_terms($post->ID, 'categorie', array("fields" => "ids"));
+            $related_args = array(
+                'post_type' => 'photo',
+                'posts_per_page' => 2, // Limite à deux photos apparentées
+                'post__not_in' => array($post->ID), // Exclut la photo courante
+                'tax_query' => array(
+                    array(
+                        'taxonomy' => 'categorie',
+                        'field' => 'id',
+                        'terms' => $term_list
+                    )
+                )
+            );
+
+            $related_query = new WP_Query($related_args);
+
+            if ($related_query->have_posts()) {
+                while ($related_query->have_posts()) {
+                    $related_query->the_post();
+                    $photo_url = get_field('photo_url'); // Remplacer par le nom réel de ton custom field
+                    $photo_alt = get_post_meta(get_field('photo'), '_wp_attachment_image_alt', true);
+                    // Inclusion du template pour chaque photo
+                    include(locate_template('/template-parts/photo-block.php'));
+                }
+                wp_reset_postdata();
+            }
+        ?>
+
+    </div>
+
 </div>
 
 

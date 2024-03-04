@@ -21,6 +21,64 @@ register_nav_menus( array(
   ) 
 );
 
+
+// WP-Query For Single-Photo Navigation Interaction  TODO corriger
+
+/**requête WP_Query pour navigation single-photo */
+function motaphoto_request_photoMiniature($order) {
+  // Validation de $order pour s'assurer qu'elle contient 'DESC' ou 'ASC'
+  $order = in_array($order, ['DESC', 'ASC']) ? $order : 'DESC';
+
+  // Arguments de base pour la requête
+  $args = array(
+      'post_type' => 'photo', 
+      'posts_per_page' => 1, 
+      'meta_key' => 'annee',  
+      'orderby' => 'meta_value_num', 
+      'order' => $order,
+   );
+
+  // Exécute la requête
+  $query = new WP_Query($args);
+
+  // Initialise la réponse
+  $response = [];
+
+  // Si la requête a des posts, récupère le nécessaire
+  if ($query->have_posts()) {
+      while ($query->have_posts()) {
+          $query->the_post();
+          $photo_id = get_field('photo');
+          if ($photo_id) {
+              $response['img'] = wp_get_attachment_image_url($photo_id, 'thumbnail');
+              $response['url'] = get_permalink();
+          }
+      }
+  } else {
+      // Si aucun post n'est trouvé (premier ou dernier), chercher l'opposé
+      $args['order'] = $order == 'DESC' ? 'ASC' : 'DESC'; // Inverse l'ordre
+      $query = new WP_Query($args);
+
+      if ($query->have_posts()) {
+          while ($query->have_posts()) {
+              $query->the_post();
+              $photo_id = get_field('photo');
+              if ($photo_id) {
+                  $response['img'] = wp_get_attachment_image_url($photo_id, 'thumbnail');
+                  $response['url'] = get_permalink();
+              }
+          }
+      } else {
+          $response = false;
+      }
+  }
+
+  wp_reset_postdata();
+  return $response;
+}
+
+
+
 /* TODO mettre au propore option optmisation Green code */
 // Optimize page loading by disabling autoloading of global styles and SVG filters
 function custom_wp_remove_global_css() {

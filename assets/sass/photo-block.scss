@@ -1,0 +1,44 @@
+.photo-block {
+    position: relative;
+    width: 100%;
+    height: auto;
+
+    &__image {
+        width: 100%;
+        height: auto;
+        object-fit: cover; // Assure que l'image couvre bien son conteneur
+    }
+
+    &__overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+
+        &:hover {
+            opacity: 1;
+        }
+    }
+
+    &__info-icon,
+    &__fullscreen-icon {
+        // Styles pour les icônes
+        background-color: #fff; // Couleur de fond des icônes
+        padding: 10px; // Espacement autour de l'icône
+        border-radius: 50%; // Rend l'icône circulaire
+        transition: transform 0.3s ease, background-color 0.3s ease; // Transition fluide pour le transform et la couleur de fond
+
+        // Lorsque l'utilisateur survole l'icône, elle grossit légèrement et change de couleur
+        &:hover {
+            transform: scale(1.1); // Grossit l'icône
+            background-color: #ccc; // Change la couleur de fond lors du survol
+        
+    }
+}
+}
