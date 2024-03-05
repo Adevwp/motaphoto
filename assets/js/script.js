@@ -1,28 +1,43 @@
+// CONTACT MODAL
 document.addEventListener('DOMContentLoaded', function () {
     // Get the modal
     const modal = document.getElementById('contact-myModal');
 
-    // Get the two buttons that opens the modal
-    const btn = document.getElementById('menu-item-33'); // Button on the menu
-    const btn2 = document.getElementById('single-photo-interaction__contact_btn'); // Button on single-photo.php 
-
     // Get the <span> element that closes the modal
     const span = document.getElementsByClassName('contact-modal__content_close')[0];
 
-    // When the user clicks on one of the button, open the modal
-    btn.onclick = function() {
-        modal.style.display = 'block';
-    }; 
+    // Get the button that opens the modal from the menu
+    const btn = document.getElementById('menu-item-33'); 
+    if (btn) {
+        btn.onclick = function() {
+            modal.style.display = 'block';
+        };
+    }
 
-    btn2.onclick = function() {
-        modal.style.display = 'block';
-    }; 
+    // Get the button that opens the modal from the single photo page
+    const btn2 = document.getElementById('single-photo-interaction__contact_btn'); 
+    if (btn2) {
+        btn2.onclick = function() {
+            modal.style.display = 'block';
 
-    // TODO ajouter la récupération de la référence de la photo 
+            // Add the reference of the photo when the modal is opened from the bnt2 on single photo page
+            const contactRefField = document.querySelector('input[name="your-subject"]'); 
+            if (contactRefField) {
+                const referenceElement = document.getElementById('reference');
+                const reference = referenceElement ? referenceElement.textContent.trim() : '';
+               
+                // Set the reference value to the modal field
+                contactRefField.value = reference;
+            }
+        };
+    }
     
+   
     // When the user clicks on <span> (x), close the modal
-    span.onclick = function() {
-        modal.style.display = 'none';
+    if (span) {
+        span.onclick = function() {
+            modal.style.display = 'none';
+        }
     };
 
     // When the user clicks anywhere outside of the modal, close it

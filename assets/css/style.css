@@ -102,18 +102,28 @@ Class non utilisée
   width: 100%; /* Full width */
   height: 100%; /* Full height */
   overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0, 0, 0); /* Fallback color */
+  /*background-color: rgb(0,0,0);  Fallback color */
   background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+  opacity: 0; /* Start with modal being transparent */
+  animation: fadeIn 0.5s ease-out forwards; /* Apply the fade-in animation when shown */
 }
 
-/* Modal Content/Box */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  } /* Start with an invisible state */
+  to {
+    opacity: 1;
+  } /* End with a fully visible state */
+}
+/* Modal Content Block */
 .contact-modal__content {
   background-color: #fefefe;
   margin: 15% auto; /*15% from the top and centered */
-  padding-top: 18px;
+  padding-top: 4px;
   border: 3px solid #000;
   width: 597px;
-  height: 810px;
+  height: 825px;
 }
 
 /* The Close Button */
@@ -121,7 +131,8 @@ Class non utilisée
   color: #C4C4C4;
   float: right;
   font-size: 12px;
-  font-weight: bold;
+  font-weight: 600;
+  padding-bottom: 2px;
 }
 
 .contact-modal__content_close:hover,
