@@ -1,15 +1,20 @@
 document.addEventListener('DOMContentLoaded', function () {
     // Get the modal
-    const modal = document.getElementById('myModal');
+    const modal = document.getElementById('contact-myModal');
 
-    // Get the button that opens the modal
-    const btn = document.getElementById('menu-item-33'); // Todo ajouter le bouton contact sur page photo
+    // Get the two buttons that opens the modal
+    const btn = document.getElementById('menu-item-33'); // Button on the menu
+    const btn2 = document.getElementById('single-photo-interaction__contact_btn'); // Button on single-photo.php 
 
     // Get the <span> element that closes the modal
-    const span = document.getElementsByClassName('close')[0];
+    const span = document.getElementsByClassName('contact-modal__content_close')[0];
 
-    // When the user clicks on the button, open the modal
+    // When the user clicks on one of the button, open the modal
     btn.onclick = function() {
+        modal.style.display = 'block';
+    }; 
+
+    btn2.onclick = function() {
         modal.style.display = 'block';
     }; 
 

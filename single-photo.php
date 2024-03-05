@@ -80,35 +80,35 @@
             <button id="single-photo-interaction__contact_btn" type="button">Contact</button>
         </div>
         <div class="single-photo-interaction__navigation"> <!-- TODO .navigation -->
-            <div class="miniature">
-                <div class="miniature-photo">
+            <div class="navigation-card"> <!-- TODO .miniature -->
+                <div class="navigation-card-photo"> <!-- TODO .miniature-photo - class non utilisee on lma garde ? -->
                     <?php $prev = motaphoto_request_photoMiniature('ASC'); ?>
                     <?php if ($prev) { ?>
                         <a href="<?php echo $prev['url'] ?>">
-                            <img class="miniature-prev" src="<?php echo $prev['img'][0] ?>">
-                        </a>
+                            <img class="navigation-card-left" src="<?php echo $prev['img'][0] ?>">
+                        </a> <!-- TODO .miniature-prev -->
                     <?php } ?>
 
                     <?php $next = motaphoto_request_photoMiniature('DESC'); ?>
                     <?php if ($next) { ?>
                         <a href="<?php echo $next['url'] ?>">
-                            <img class="miniature-next" src="<?php echo $next['img'][0] ?>">
-                        </a>
+                            <img class="navigation-card-right" src="<?php echo $next['img'][0] ?>">
+                        </a> <!-- TODO .miniature-next -->
                     <?php } ?>
                 </div>
-                <div class="miniature-fleche">
+                <div class="navigation-card-arrow"> <!-- TODO .miniature-fleche -->
                     <?php $prev = motaphoto_request_photoMiniature('ASC'); ?>
                     <?php if ($prev) { ?>
                         <a href="<?php echo $prev['url'] ?>">
-                            <img class="arrow-prev" src="<?php echo get_template_directory_uri() . '\assets\images\arrow-left.svg'; ?> " alt="Photo précédente">
-                        </a>
-                    <?php } ?>
+                            <img class="arrow-left" src="<?php echo get_template_directory_uri() . '\assets\images\arrow-left.svg'; ?> " alt="Photo précédente">
+                        </a> 
+                    <?php } ?> <!-- TODO .arrow-prev -->
 
                     <?php $next = motaphoto_request_photoMiniature('DESC'); ?>
                     <?php if ($next) { ?>
                         <a href="<?php echo $next['url'] ?>">
-                            <img class="arrow-next" src="<?php echo get_template_directory_uri() . '\assets\images\arrow-right.svg'; ?> " alt="Photo suivante">
-                        </a>
+                            <img class="arrow-right" src="<?php echo get_template_directory_uri() . '\assets\images\arrow-right.svg'; ?> " alt="Photo suivante">
+                        </a> <!-- TODO .arrow-next -->
                     <?php } ?>
                 </div>
             </div>
@@ -116,7 +116,9 @@
     </div>
     
     <!-- TODO Photo apparentée  -->
-    <div>
+    <div class="related-photos-section">
+        <h3>VOUS AIMEREZ AUSSI</h3>
+        <div class="related-photos">
         <?php
             $term_list = wp_get_post_terms($post->ID, 'categorie', array("fields" => "ids"));
             $related_args = array(
@@ -137,15 +139,16 @@
             if ($related_query->have_posts()) {
                 while ($related_query->have_posts()) {
                     $related_query->the_post();
-                    $photo_url = get_field('photo_url'); // Remplacer par le nom réel de ton custom field
+                    /*$photo_url = get_field('photo_url'); 
                     $photo_alt = get_post_meta(get_field('photo'), '_wp_attachment_image_alt', true);
-                    // Inclusion du template pour chaque photo
-                    include(locate_template('/template-parts/photo-block.php'));
+                    include(locate_template('/template-parts/photo-block.php'));*/
+                    get_template_part('template-parts/photo-block', null, array('post_id' => get_the_ID()));
+
                 }
                 wp_reset_postdata();
             }
         ?>
-
+        </div>  
     </div>
 
 </div>

@@ -1,5 +1,5 @@
 /* The Modal (background) */
-.modal {
+.contact-modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
@@ -13,7 +13,7 @@
 }
 
 /* Modal Content/Box */
-.modal-content {
+.contact-modal__content {
     background-color: #fefefe;
     margin: 15% auto;  /*15% from the top and centered */
     padding-top: 18px;
@@ -23,22 +23,22 @@
 }
 
 /* The Close Button */
-.close {
+.contact-modal__content_close {
     color: #C4C4C4;
     float: right;
-    font-size: 28px;
+    font-size: 12px;
     font-weight: bold;
 }
 
-.close:hover,
-.close:focus {
-    color: #FE5858;
+.contact-modal__content_close:hover,
+.contact-modal__content_close:focus {
+    color: #313144;
     text-decoration: none;
     cursor: pointer;
 }
 
 /* Modal Body*/
-.modal-body {
+.contact-modal__content_body {
     padding: 2px 26px;
     margin: auto;
     display: flex;

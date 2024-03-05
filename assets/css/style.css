@@ -93,7 +93,7 @@ Class non utilisée
   font-style: normal;
 }
 /* The Modal (background) */
-.modal {
+.contact-modal {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
@@ -107,7 +107,7 @@ Class non utilisée
 }
 
 /* Modal Content/Box */
-.modal-content {
+.contact-modal__content {
   background-color: #fefefe;
   margin: 15% auto; /*15% from the top and centered */
   padding-top: 18px;
@@ -117,22 +117,22 @@ Class non utilisée
 }
 
 /* The Close Button */
-.close {
+.contact-modal__content_close {
   color: #C4C4C4;
   float: right;
-  font-size: 28px;
+  font-size: 12px;
   font-weight: bold;
 }
 
-.close:hover,
-.close:focus {
-  color: #FE5858;
+.contact-modal__content_close:hover,
+.contact-modal__content_close:focus {
+  color: #313144;
   text-decoration: none;
   cursor: pointer;
 }
 
 /* Modal Body*/
-.modal-body {
+.contact-modal__content_body {
   padding: 2px 26px;
   margin: auto;
   display: flex;
@@ -142,11 +142,11 @@ Class non utilisée
   /*width: 100%;*/
   background-color: violet;
 }
-.modal-body #wpcf7-f42-o1 {
+.contact-modal__content_body #wpcf7-f42-o1 {
   background-color: beige;
   margin-top: 10px;
 }
-.modal-body input {
+.contact-modal__content_body input {
   height: 40px;
   width: 263px;
   border-radius: 8px;
@@ -158,7 +158,7 @@ Class non utilisée
   font-size: 0.875rem;
   font-weight: 500;
 }
-.modal-body input[type=submit] {
+.contact-modal__content_body input[type=submit] {
   height: 50px;
   border-radius: 2px;
   background-color: #D8D8D8;
@@ -172,13 +172,13 @@ Class non utilisée
   font-family: "Space Mono";
   font-weight: 400;
 }
-.modal-body textarea {
+.contact-modal__content_body textarea {
   height: 210px;
   width: 263px;
   border-radius: 8px;
   border: 1px solid #B8BBC2;
 }
-.modal-body label {
+.contact-modal__content_body label {
   color: #313144;
 }
 
@@ -207,6 +207,7 @@ Class non utilisée
   justify-content: center;
   align-items: center;
   width: 100vw;
+  background-color: red;
 }
 
 .single-photo-info {
@@ -216,6 +217,7 @@ Class non utilisée
   align-items: flex-end;
   width: 80%;
   margin-top: 2%;
+  background-color: coral;
 }
 
 .single-photo-info_content {
@@ -288,33 +290,34 @@ Class non utilisée
   width: 80%;
   height: 188px;
   border-bottom: solid 1px black;
+  background-color: yellow;
 }
-.single-photo-interaction .interesse {
+.single-photo-interaction .single-photo-interaction__contact {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   width: 50%;
   margin-right: 2%;
 }
-.single-photo-interaction .interesse button {
-  margin-left: 7%;
+.single-photo-interaction .single-photo-interaction__contact button {
   background-color: #D8D8D8;
   border-radius: 2px;
-  width: 263px;
+  width: 272px;
   height: 50px;
+  padding: 8px 15px;
   border: none;
   font-family: "Space Mono";
-  font-size: 0.8rem;
-  box-shadow: 0px 2px 1px #B8BBC2;
+  font-size: 0.75rem;
+  box-shadow: 0px 2px 1px 0px rgba(0, 0, 0, 0.02);
   transition: all ease-in-out 300ms;
 }
-.single-photo-interaction .interesse button:hover {
+.single-photo-interaction .single-photo-interaction__contact button:hover {
   font-weight: 700;
   background-color: black;
-  transform: scale(0.95);
-  color: #E5E5E5;
+  transform: scale(0.98);
+  color: white;
 }
-.single-photo-interaction .navigation {
+.single-photo-interaction .single-photo-interaction__navigation {
   width: 50%;
   display: flex;
   flex-direction: row;
@@ -322,14 +325,14 @@ Class non utilisée
   height: 170px;
   align-items: flex-end;
 }
-.single-photo-interaction .navigation .miniature {
+.single-photo-interaction .single-photo-interaction__navigation .navigation-card {
   display: flex;
   flex-direction: column;
 }
-.single-photo-interaction .navigation .miniature-prev, .single-photo-interaction .navigation .miniature-next {
+.single-photo-interaction .single-photo-interaction__navigation .navigation-card-left, .single-photo-interaction .single-photo-interaction__navigation .navigation-card-right {
   display: none;
 }
-.single-photo-interaction .navigation .miniature-fleche {
+.single-photo-interaction .single-photo-interaction__navigation .navigation-card-arrow {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -338,16 +341,16 @@ Class non utilisée
   position: relative;
   z-index: 0;
 }
-.single-photo-interaction .navigation .arrow-prev {
+.single-photo-interaction .single-photo-interaction__navigation .arrow-left {
   transition: all ease-in-out 300ms;
 }
-.single-photo-interaction .navigation .arrow-prev:hover {
+.single-photo-interaction .single-photo-interaction__navigation .arrow-left:hover {
   transform: scaleX(1.2) scaleY(1);
 }
-.single-photo-interaction .navigation .arrow-next {
+.single-photo-interaction .single-photo-interaction__navigation .arrow-right {
   transition: all ease-in-out 300ms;
 }
-.single-photo-interaction .navigation .arrow-next:hover {
+.single-photo-interaction .single-photo-interaction__navigation .arrow-right:hover {
   transform: scaleX(1.2) scaleY(1);
 }
 
@@ -373,40 +376,80 @@ Class non utilisée
   width: 100%;
 }
 
-.photo-block {
+/*  TODO Related Photo section */
+.related-photos-section {
+  background-color: blueviolet;
+}
+.related-photos-section h3 {
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+.related-photos-section .related-photos {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  background-color: grey;
+}
+.related-photos-section .related-photos .photo-block {
   position: relative;
+  overflow: hidden;
+}
+.related-photos-section .related-photos .photo-block img {
   width: 100%;
   height: auto;
+  transition: transform 0.3s ease;
 }
-.photo-block__image {
-  width: 100%;
-  height: auto;
-  object-fit: cover;
+.related-photos-section .related-photos .photo-block img:hover {
+  transform: scale(1.1);
 }
-.photo-block__overlay {
+.related-photos-section .related-photos .photo-block .photo-overlay {
   position: absolute;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
+  width: 100%;
+  height: 100%;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.5);
   opacity: 0;
+  visibility: hidden;
   transition: opacity 0.3s ease;
 }
-.photo-block__overlay:hover {
+.related-photos-section .related-photos .photo-block .photo-overlay:hover {
   opacity: 1;
+  visibility: visible;
 }
-.photo-block__info-icon, .photo-block__fullscreen-icon {
-  background-color: #fff;
-  padding: 10px;
-  border-radius: 50%;
-  transition: transform 0.3s ease, background-color 0.3s ease;
+.related-photos-section .related-photos .photo-block .photo-overlay a {
+  margin: 0 10px;
 }
-.photo-block__info-icon:hover, .photo-block__fullscreen-icon:hover {
-  transform: scale(1.1);
-  background-color: #ccc;
+
+.photo-block img {
+  transition: transform 0.3s ease;
+}
+.photo-block img:hover {
+  transform: scale(1.05);
+}
+.photo-block .photo-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
+}
+.photo-block .photo-overlay:hover {
+  opacity: 1;
+  visibility: visible;
+}
+.photo-block .photo-overlay a {
+  margin: 0 10px;
 }
 
 /* BODY STYLE */

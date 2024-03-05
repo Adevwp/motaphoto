@@ -1,13 +1,13 @@
 <!-- The Modal -->
-<div id="myModal" class="modal">
+<div id="contact-myModal" class="contact-modal">
 
   <!-- Modal content -->
-    <div class="modal-content">
-        <div class="modal-header">
-        <span class="close">x</span>
+    <div class="contact-modal__content">
+        <div class="contact-modal__content_header">
+        <span class="contact-modal__content_close">FERMER</span>
         <img src="<?php echo get_template_directory_uri(); ?>/assets/images/contact-header.webp" alt='Image en-tête du formulaire de contact'>
         </div>   
-        <div class="modal-body">			
+        <div class="contact-modal__content_body">			
         
         <?php
 			// Insert Contact form 
