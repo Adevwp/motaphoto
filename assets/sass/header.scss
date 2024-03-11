@@ -3,6 +3,11 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+   /* width: 100vw;*/
+    max-width: 1440px;
+   /* margin: auto;
+    padding-left: 146px;
+    padding-right: 146px;*/
 
     ul {
         display: flex;

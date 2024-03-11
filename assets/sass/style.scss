@@ -5,11 +5,12 @@
 @import 'single-photo';
 @import 'photo-block';
 
-/* BODY STYLE */
+/*** BODY STYLE ***/
 body {
     background-color: aqua;
     color: #000;
-    max-width: 1440px;
+    max-width: 1440px !important;
+    margin: auto;
 }
 
     /* Typography*/
@@ -51,4 +52,29 @@ p {
 
 .site-footer, .site-header, .site-footer p {
     font-size: 1rem;   
+}
+
+/*** Media Queries ***/
+/* Mobile Styles */
+@media only screen and (max-width: 767px) {
+    /* Ajoutez  styles mobiles ici */
+    body {
+        background-color: black; /*TODO à supp*/
+        max-width: 767px;
+    }
+}
+
+/* Tablet Styles */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    /* Ajoutez styles tablette ici */
+    body {
+        background-color: peachpuff; /*TODO à supp*/
+        max-width: 991px;
+    }
+}
+
+
+/* Desktop Styles */
+@media only screen and (min-width: 992px) and (max-width: 1440px) {
+    /* Ajoutez vos styles desktop ici */
 }

@@ -13,7 +13,7 @@
         <img src="<?php echo esc_url($photo_url); ?>" alt="<?php echo esc_attr($photo_alt); ?>">
 
         <div class="photo-overlay">
-            <a href="<?php echo get_permalink($post_id); ?>">
+            <a href="<?php echo get_permalink($post_id); ?>" class="photo-details">
                 <img src="<?php echo get_template_directory_uri(); ?>/assets/images/icon-eye.svg" alt="Voir détails">
             </a>
             <!-- Ici tu pourras ajouter le lien pour ouvrir la lightbox -->
