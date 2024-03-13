@@ -1,5 +1,8 @@
 <?php get_header(); ?>
 
+<!-- START OF MAIN-->
+<main id="primary" class="site-main">
+
 <?php
     // Get Taxonomy creat with ACF 
     $reference = get_field('reference');
@@ -149,9 +152,6 @@
             if ($related_query->have_posts()) {
                 while ($related_query->have_posts()) {
                     $related_query->the_post();
-                    /*$photo_url = get_field('photo_url'); 
-                    $photo_alt = get_post_meta(get_field('photo'), '_wp_attachment_image_alt', true);
-                    include(locate_template('/template-parts/photo-block.php'));*/
                     get_template_part('template-parts/photo-block', null, array('post_id' => get_the_ID()));
 
                 }
@@ -166,5 +166,8 @@
 
 </div>
 
+</main>
+
+<!-- START OF FOOTER-->
 
 <?php get_footer(); ?>

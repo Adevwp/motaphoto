@@ -8,10 +8,19 @@ add_theme_support( 'title-tag' );
 
 // Adding the theme
 function mototheme_enqueue_styles() {
+  global $wp_query;
   // Add style  
   wp_enqueue_style('style-css', get_template_directory_uri() . '/assets/css/style.css');
-  // Add scripts
+  // Add general scripts
   wp_enqueue_script( 'scripts', get_template_directory_uri() . '/assets/js/script.js', array(), get_bloginfo('version'), true );
+  // Add Ajax script only on the front page
+  if (is_front_page()) {
+    wp_enqueue_script('photo-catalogue-ajax', get_template_directory_uri() . '/assets/js/photo-catalogue-ajax.js', array('jquery'), null, true);
+    wp_localize_script('photo-catalogue-ajax', 'photo_catalogue_ajax_params', array(
+      'ajaxurl' => admin_url('admin-ajax.php'),
+      'posts' => json_encode($wp_query->query_vars), // Transfère les vars de la requête initiale au JS
+    ));
+  }
 }
 add_action('wp_enqueue_scripts', 'mototheme_enqueue_styles');
 
@@ -20,7 +29,6 @@ register_nav_menus( array(
 	'footer' => 'Menu Bas de page',
   ) 
 );
-
 
 // WP-Query For Single-Photo Navigation Interaction  TODO corriger
 
@@ -31,7 +39,7 @@ function motaphoto_get_adjacent_photo($current_post_id, $direction = 'next') {
       'post_status'    => 'publish',
       'orderby'        => 'date',
       'order'          => $direction === 'next' ? 'ASC' : 'DESC',
-      'post__not_in'   => [$current_post_id], // Exclure le post actuel
+      'post__not_in'   => [$current_post_id], // Exclure le post actuel todo
       'meta_query'     => [
           [
               'key'     => 'photo',
@@ -50,11 +58,11 @@ function motaphoto_get_adjacent_photo($current_post_id, $direction = 'next') {
   $query = new WP_Query($args);
 
   if (!$query->have_posts() && $direction === 'next') {
-      // Si aucune photo suivante, retourner à la première photo
+      // Si aucune photo suivante, retourner à la première photo todo
       $args['date_query'] = ['after' => '1900-01-01'];
       $query = new WP_Query($args);
   } elseif (!$query->have_posts() && $direction === 'prev') {
-      // Si aucune photo précédente, aller à la dernière photo
+      // Si aucune photo précédente, aller à la dernière photo todo 
       unset($args['date_query']);
       $args['order'] = 'DESC';
       $query = new WP_Query($args);
@@ -74,9 +82,71 @@ function motaphoto_get_adjacent_photo($current_post_id, $direction = 'next') {
 
 
 
+// WP-Query For random Hero Header Photo 
+
+function heroHeader_request_randomPhoto() 
+{
+    $args = array (
+        'post_type' => 'photo', 
+        'posts_per_page' => 1, 
+        'post_status' => 'publish',
+        'orderby' => 'rand',
+    ); 
+
+    $query = new WP_Query($args);
+    $response = array();
+
+    if($query->have_posts()){
+        while ($query->have_posts()){
+            $query->the_post(); 
+            $photo_id = get_field('photo');          
+            $image = wp_get_attachment_image_src($photo_id, 'full'); 
+            $alt_text = get_post_meta($photo_id, '_wp_attachment_image_alt', true);
+
+            $item = array(
+                'img' => $image,
+                'alt' => $alt_text,
+            );
+            $response[] = $item;   
+           
+        }
+    } else {
+        $response = false; 
+    }
+    wp_reset_postdata();
+    return $response;
+}
 
 
+// AJAX to load more photos
+function loadmore_photos_handler() {
+  // Assurez-vous que les données POST sont présentes
+  if (!isset($_POST['query']) || !isset($_POST['page'])) {
+      wp_die(); // Arrêtez si les données nécessaires ne sont pas présentes
+  }
 
+  $args = json_decode(stripslashes($_POST['query']), true);
+  $args['paged'] = intval($_POST['page']); // Assurez-vous que la pagination est un entier
+  $args['post_status'] = 'publish';
+  $args['post_type'] = 'photo'; // Confirmez que le type de post est 'photo'
+
+  $query = new WP_Query($args);
+
+  if ($query->have_posts()) {
+      while ($query->have_posts()) {
+          $query->the_post();
+          get_template_part('template-parts/photo-block', null, array('post_id' => get_the_ID()));
+      }
+  } else {
+      // Si aucun post supplémentaire n'est trouvé, vous pourriez vouloir renvoyer une indication au JS
+      echo 'no_more_posts'; // Ceci est juste un exemple
+  }
+
+  wp_die(); // Arrête la requête Ajax proprement
+}
+
+add_action('wp_ajax_loadmore_photos', 'loadmore_photos_handler');
+add_action('wp_ajax_nopriv_loadmore_photos', 'loadmore_photos_handler');
 
 
 

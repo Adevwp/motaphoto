@@ -339,17 +339,17 @@ Class non utilisée
 .photo-block {
   position: relative;
   overflow: hidden;
-  display: block;
+  display: flex;
   height: 495px;
   width: 100%;
 }
-.photo-block img {
+.photo-block__picture {
   width: 100%;
   height: 495px;
   object-fit: cover;
   transition: transform 0.3s ease;
 }
-.photo-block img:hover {
+.photo-block:hover .photo-block__picture {
   transform: scale(1.05);
 }
 .photo-block .photo-overlay {
@@ -366,29 +366,27 @@ Class non utilisée
   visibility: hidden;
   transition: opacity 0.3s ease, visibility 0.3s ease;
 }
-.photo-block .photo-overlay:hover {
+.photo-block .photo-overlay .photo-details {
+  width: 46px;
+  height: 30px;
+}
+.photo-block .photo-overlay .photo-fullscreen {
+  position: absolute;
+  top: 11px;
+  right: 18px;
+  width: 34px;
+  height: 34px;
+}
+.photo-block:hover .photo-overlay {
   opacity: 1;
   visibility: visible;
 }
-.photo-block .photo-overlay .thumbnail-hover__eye,
-.photo-block .photo-overlay .photo-fullscreen {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: transform 0.3s ease;
-}
-.photo-block .photo-overlay .thumbnail-hover__eye:hover,
-.photo-block .photo-overlay .photo-fullscreen:hover {
-  transform: scale(1.1);
-}
-.photo-block .photo-overlay .thumbnail-hover__eye img,
-.photo-block .photo-overlay .photo-fullscreen img {
-  width: 45px;
-  height: 30px;
-}
-.photo-block .photo-overlay .thumbnail-hover__ref,
-.photo-block .photo-overlay .thumbnail-hover__category {
+.photo-block .photo-overlay__info {
   position: absolute;
+  bottom: 12px;
+  left: 0;
+  width: 100%;
+  text-align: center;
   color: #FFF;
   font-family: "Poppins";
   font-size: 14px;
@@ -397,14 +395,144 @@ Class non utilisée
   line-height: normal;
   letter-spacing: 1.4px;
   text-transform: uppercase;
+  opacity: 0;
+  visibility: hidden;
 }
-.photo-block .photo-overlay .thumbnail-hover__ref {
+.photo-block:hover .photo-overlay__info {
+  opacity: 1;
+  visibility: visible;
+}
+.photo-block .photo-overlay__reference,
+.photo-block .photo-overlay__category {
+  position: absolute;
+}
+.photo-block .photo-overlay__reference {
   bottom: 12px;
   left: 17px;
 }
-.photo-block .photo-overlay .thumbnail-hover__category {
+.photo-block .photo-overlay__category {
   bottom: 12px;
   right: 23px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.hero-header {
+  width: 100%;
+  height: 966px;
+  position: relative;
+  opacity: 0;
+  animation: fadeIn 200ms forwards;
+  background-color: aquamarine;
+}
+
+.hero-header__title {
+  width: 85%;
+  position: absolute;
+  left: 56%;
+  bottom: 65%;
+  transform: translate(-50%, 50%);
+  z-index: 1;
+}
+.hero-header__title h1 {
+  color: rgba(255, 255, 255, 0);
+  -webkit-text-stroke: 3px white;
+  opacity: 0;
+  animation: fadeIn 200ms forwards;
+}
+
+.hero-header__image {
+  position: relative;
+  display: inline-block;
+  z-index: 0;
+  width: 100%;
+  /*position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /
+  object-fit: contain;  TODO */
+}
+.hero-header__image .photo_hero {
+  object-fit: cover;
+}
+
+/* ou ca comme para TODO pour image
+    width: 100vw;
+    height: 95vh;
+    object-fit: cover;
+*/
+.site-main {
+  max-width: 1440px;
+}
+
+.photo-catalogue {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  width: 75vw;
+  margin: 0 auto;
+}
+
+.image-catalogue {
+  width: 564px;
+  height: 495px;
+  object-fit: cover;
+  margin-top: 2%;
+}
+
+.overlay-catalogue {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 97%;
+  margin-top: 2%;
+  opacity: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.3s ease;
+}
+
+.photo-item:hover .overlay-catalogue {
+  opacity: 1;
+}
+
+.loadmore-photo-button {
+  display: flex;
+  justify-content: center;
+  background-color: green;
+}
+
+#loadmore-btn {
+  width: 272px;
+  height: 50px;
+  padding: 8px 15px;
+  margin: 50px 0;
+  border: none;
+  font-family: "Space Mono";
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: #000;
+  background-color: #D8D8D8;
+  border-radius: 2px;
+  box-shadow: 0px 2px 1px 0px rgba(0, 0, 0, 0.02);
+  transition: transform 0.35s ease, background-color 0.35s ease;
+}
+#loadmore-btn:hover {
+  color: white;
+  font-weight: 700;
+  background-color: #000;
+  transform: scale(1.1);
 }
 
 /*** BODY STYLE ***/

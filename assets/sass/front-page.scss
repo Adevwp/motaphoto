@@ -1,0 +1,135 @@
+// HERO HEADER
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+
+.hero-header {
+    width: 100%;
+    height: 966px;
+    position: relative;
+    opacity: 0;
+    animation: fadeIn 200ms forwards;
+    background-color: aquamarine; // todo supp
+}
+
+.hero-header__title {
+    width: 85%;
+    position: absolute;
+    left: 56%; 
+    bottom: 65%;
+    transform: translate(-50%, 50%); 
+    z-index: 1;
+   
+    h1 {
+    color:rgba(255,255,255,0);
+    -webkit-text-stroke: 3px white;
+    opacity: 0;
+    animation: fadeIn 200ms forwards;
+}  
+}
+
+.hero-header__image {
+    position: relative;
+    display: inline-block;
+    z-index: 0; 
+    width: 100%;
+
+  
+    /*position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /
+    object-fit: contain;  TODO */
+
+    .photo_hero {
+        object-fit: cover;
+    }
+}
+
+/* ou ca comme para TODO pour image
+    width: 100vw;
+    height: 95vh;
+    object-fit: cover;
+*/
+
+// CONTENT
+
+.site-main {
+    max-width: 1440px;
+}
+
+.photo-catalogue {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    width: 75vw;
+    margin: 0 auto;    
+}
+
+.image-catalogue {
+    width: 564px;
+    height: 495px;
+    object-fit: cover;
+    margin-top: 2%; 
+}
+
+.overlay-catalogue {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 97%;
+    margin-top: 2%;
+    opacity: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.3s ease;
+}
+
+.photo-item:hover .overlay-catalogue {
+    opacity: 1;
+}
+
+
+
+
+// LOAD MORE BUTTON
+.loadmore-photo-button {
+    display: flex;
+    justify-content: center;
+    background-color: green ; // odo supp
+}
+
+#loadmore-btn {
+    width: 272px;
+    height: 50px;
+    padding: 8px 15px;
+    margin: 50px 0;
+    border: none;
+    font-family: 'Space Mono';
+    font-size: 0.75rem;
+    font-weight: 400;
+    color: #000;
+    background-color: #D8D8D8;
+    border-radius: 2px;
+    box-shadow: 0px 2px 1px 0px rgba(0, 0, 0, 0.02);
+    transition: transform 0.35s ease, background-color 0.35s ease;   
+
+    &:hover {
+        color: white;
+        font-weight: 700;
+        background-color: #000;
+        transform: scale(1.1);
+    }  
+}
+
