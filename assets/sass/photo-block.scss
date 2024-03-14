@@ -41,6 +41,11 @@
             right: 18px;
             width: 34px;
             height: 34px;
+            cursor: pointer;
+
+            &:hover {
+                opacity: .5;
+            }
         }
     }
 

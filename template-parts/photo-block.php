@@ -21,9 +21,9 @@
                 <img src="<?php echo get_template_directory_uri(); ?>/assets/images/icon-eye.svg" alt="Voir détails de la photo">
             </a>
             <!-- TODO Ici tu pourras ajouter le lien pour ouvrir la lightbox -->
-            <a href="#" class="photo-fullscreen">
-                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/icon-fullscreen.svg" alt="Voir la photo en taille réelle">
-            </a>
+            <!--<a href="#" class="photo-fullscreen"> -->
+                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/icon-fullscreen.svg" alt="Voir la photo en taille réelle" class="photo-fullscreen">
+              <!--</a> -->
         </div>
 
             <!-- TODO Additionnal information about the photo on hover -->

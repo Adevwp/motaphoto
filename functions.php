@@ -20,6 +20,9 @@ function mototheme_enqueue_styles() {
       'ajaxurl' => admin_url('admin-ajax.php'),
       'posts' => json_encode($wp_query->query_vars), // Transfère les vars de la requête initiale au JS
     ));
+  // Add script for the lightbox
+  wp_enqueue_script('lightbox-js', get_stylesheet_directory_uri() . '/assets/js/lightbox-modal.js', array('jquery'), null, true);
+     
   }
 }
 add_action('wp_enqueue_scripts', 'mototheme_enqueue_styles');

@@ -11,8 +11,12 @@
             ); ?>
         </nav>
     </footer>
-
-    <?php get_template_part('template-parts/contact-modal');?>
+    
+    <!-- Integration of the modal Contact  -->
+    <?php get_template_part('template-parts/contact-modal'); ?> 
+    
+    <!-- Integration of the modal Lightbox  -->
+    <?php get_template_part('template-parts/lightbox-modal'); ?>
 
 	<?php wp_footer(); ?>
 </body>
