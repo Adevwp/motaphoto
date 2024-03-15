@@ -5,9 +5,10 @@
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(0, 0, 0, 0.8);
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     z-index: 10;
     
     button {
@@ -27,7 +28,7 @@
     &__next,
     &__prev {
       position: absolute;
-      z-index: 11;
+      z-index: 12;
       cursor: pointer;
     }
   
@@ -35,12 +36,9 @@
         top: 20px;
         right: 20px;
         border:none;
-        /*background-image: url('../images/icon-close.svg');
-        background-position: center center;
-        background-size: 100% 100%;
-        background-repeat: no-repeat;*/
         width: 23px;
         height: 23px;
+        padding: 0;
     }
   
     &__next {
@@ -58,18 +56,49 @@
       align-items: center;
       justify-content: center;
       width:80vw;
+      max-height: 80vh;
       margin: 0 50px;
-      background-color: bisque;
-      z-index: 12;
+      background-color: bisque; // todo supprimer
+      z-index: 11;
   
       img {
         max-width: 90%;
+        max-height: 90%;
       }
     }
 
     &__info {
-
+        display: flex;
+        justify-content: space-between;
+        width: 80vw;
+        padding: 5px 19px 5px 5px;
+        color: white;
+        font-family: 'Space-Mono';
+        font-size: 0.875rem;
+        font-weight: 400; 
+        text-transform: uppercase; 
     }
 
   }
   
+  /*** Media Queries ***/
+/* Mobile Styles */
+@media only screen and (max-width: 767px) {
+    /* Ajoutez  styles mobiles ici */
+    .lightbox-popup__container {
+        width: 70vw;
+    }
+
+    .lightbox-popup__info {
+        max-width: 30vw;
+    }
+}
+
+/* Tablet Styles */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    /* Ajoutez styles tablette ici */
+    
+    .lightbox-popup__info {
+        max-width: 55vw;
+    }
+}

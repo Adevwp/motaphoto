@@ -32,33 +32,29 @@
 
 <!-- PHOTOS LIST-->
 
-<div class="main-page">
-        <!-- Conteneur pour les miniatures des photos -->
+<div id="photos-list" class="photos-list-container" >      <!-- TODO old thumbnail-container / ou photo-catalogue -->
+    <?php
+        // Arguments de la requête WP_Query pour récupérer les articles de type 'photo' TODO
+        $args = array(
+            'post_type' => 'photo',
+        );
 
-     <div class="thumbnail-container" id="photos-list">
-        <?php
-            // Arguments de la requête WP_Query pour récupérer les articles de type 'photo' TODO
-            $args = array(
-                'post_type' => 'photo',
-            );
+        // Initialiser la requête WP_Query avec les arguments définis TOdo
+        $query = new WP_Query( $args );
+    
+        if ($query->have_posts()) {
+            while ($query->have_posts()) {
+                $query->the_post();
+                get_template_part('template-parts/photo-block', null, array('post_id' => get_the_ID()));
 
-            // Initialiser la requête WP_Query avec les arguments définis //
-            $query = new WP_Query( $args );
-        
-            if ($query->have_posts()) {
-                while ($query->have_posts()) {
-                    $query->the_post();
-                    get_template_part('template-parts/photo-block', null, array('post_id' => get_the_ID()));
-
-                }
-                wp_reset_postdata();
             }
+            wp_reset_postdata();
+        }
 
-            else { 
-            echo '<p>Aucune autre photo trouvée dans cette catégorie.</p>';}
-        ?>
+        else { 
+        echo '<p>Aucune autre photo trouvée dans cette catégorie.</p>';}
+    ?>
               
-    </div>
 </div>
 
 <!-- BUTTON LOAD MORE-->

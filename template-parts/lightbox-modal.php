@@ -14,8 +14,7 @@
 
     <!-- Picture in full size -->
     <div class="lightbox-popup__container">
-       <!-- P <img id="lightbox-img" src="" alt="">-->
-       container
+      <img class="lightbox-img" src="" alt="">
     </div>
 
     <div class="lightbox-popup__info">

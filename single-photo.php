@@ -13,7 +13,7 @@
 
 
 <div class="single-photo">
-    <div class="single-photo-info">   <!-- TODO À METTRE À JOUR single-photo-container -->  
+    <section class="single-photo-info">   <!-- TODO À METTRE À JOUR single-photo-container -->  
    
         <div class="single-photo-info_content"> <!-- TODO À METTRE À JOUR single-photo__info-->  
 
@@ -78,9 +78,9 @@
        
         </div>
     
-    </div>
+        </section>
 
-    <div class="single-photo-interaction"> <!-- TODO À METTRE À JOUR  -->  
+    <section class="single-photo-interaction"> <!-- TODO À METTRE À JOUR  -->  
         <div class="single-photo-interaction__contact"> <!-- TODO .interesse -->
             <p> Cette photo vous intéresse?</p><!-- TODO #single-contact -->
             <button id="single-photo-interaction__contact_btn" type="button">Contact</button>
@@ -126,10 +126,10 @@
                 </div>
             </div>
         </div>
-    </div>
+                    </section>
     
     <!-- TODO RELATED PHOTOS -->
-    <div class="related-photos-section">
+    <section class="related-photos-section">
         <h3>VOUS AIMEREZ AUSSI</h3>
         <div class="related-photos">
         <?php
@@ -162,9 +162,9 @@
 
         ?>
         </div>  
-    </div>
-
+    </section>
 </div>
+
 
 </main>
 
