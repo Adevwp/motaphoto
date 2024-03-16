@@ -1,9 +1,9 @@
 <?php 
 
-// TO DO Ajouter la prise en charge des images mises en avant
+// Add support for featured images
 add_theme_support( 'post-thumbnails' );
 
-// TO DO Ajouter automatiquement le titre du site dans l'en-tête du site
+// Add the title of each pages 
 add_theme_support( 'title-tag' );
 
 // Adding the theme
@@ -121,19 +121,75 @@ function heroHeader_request_randomPhoto()
 }
 
 
-// AJAX to load more photos
+// AJAX to load more photos on Frontpage.php
 function loadmore_photos_handler() {
-  // Assurez-vous que les données POST sont présentes
-  if (!isset($_POST['query']) || !isset($_POST['page'])) {
-      wp_die(); // Arrêtez si les données nécessaires ne sont pas présentes
+  if (!isset($_POST['query']) || !isset($_POST['page'])) { //Verify if query and page exist in array
+      wp_die(); // Stop script if they no exist 
   }
 
-  $args = json_decode(stripslashes($_POST['query']), true);
-  $args['paged'] = intval($_POST['page']); // Assurez-vous que la pagination est un entier
+  $args = json_decode(stripslashes($_POST['query']), true); 
+  // Use query, and stripslashes erase anti/ for special character, json_decode convert a chain JSON on PHP array
+  // true = exist must be associative array not an object to process AJAX request
+  $args['paged'] = intval($_POST['page']); 
+  // Pages as page, intval() converts the value to an integer for paging with WP_QUERY
   $args['post_status'] = 'publish';
-  $args['post_type'] = 'photo'; // Confirmez que le type de post est 'photo'
+  $args['post_type'] = 'photo'; // Select post type 'photo'
 
   $query = new WP_Query($args);
+
+  if ($query->have_posts()) {
+    ob_start(); // Démarre la temporisation de sortie ou buffer todo 
+    while ($query->have_posts()) {
+        $query->the_post();
+        get_template_part('template-parts/photo-block', null, array('post_id' => get_the_ID()));
+    }
+    $content = ob_get_clean(); // Stocke le contenu capturé puis efface le tampon ou Récupère et nettoie le buffer todo
+    wp_send_json_success(array('content' => $content)); // Envoie une réponse JSON positive avec le contenu todo 
+} else {
+    wp_send_json_error(array('message' => 'Toutes les photos ont été chargées.')); // Envoie une réponse JSON négative avec un message
+  }
+
+
+  wp_die(); // Stop Ajax Request 
+}
+
+add_action('wp_ajax_loadmore_photos', 'loadmore_photos_handler');
+add_action('wp_ajax_nopriv_loadmore_photos', 'loadmore_photos_handler');
+
+
+// AJAX TO FILTER PHOTO
+
+function filter_photos_handler() {
+  $category = isset($_POST['category']) ? sanitize_text_field($_POST['category']) : '';
+  $format = isset($_POST['format']) ? sanitize_text_field($_POST['format']) : '';
+  $order = isset($_POST['order']) ? sanitize_text_field($_POST['order']) : 'DESC';
+
+  $args = [
+      'post_type' => 'photo',
+      'posts_per_page' => -1, // ou toute autre limite
+      'orderby' => 'date',
+      'order' => $order,
+      'tax_query' => []
+  ];
+
+  if (!empty($category)) {
+      $args['tax_query'][] = [
+          'taxonomy' => 'categorie',
+          'field' => 'slug',
+          'terms' => $category
+      ];
+  }
+
+  if (!empty($format)) {
+      $args['tax_query'][] = [
+          'taxonomy' => 'format',
+          'field' => 'slug',
+          'terms' => $format
+      ];
+  }
+
+  $query = new WP_Query($args);
+  ob_start();
 
   if ($query->have_posts()) {
       while ($query->have_posts()) {
@@ -141,15 +197,18 @@ function loadmore_photos_handler() {
           get_template_part('template-parts/photo-block', null, array('post_id' => get_the_ID()));
       }
   } else {
-      // Si aucun post supplémentaire n'est trouvé, vous pourriez vouloir renvoyer une indication au JS
-      echo 'no_more_posts'; // Ceci est juste un exemple
+      echo '<p class="noresult">Aucune photo trouvée.</p>';
   }
 
-  wp_die(); // Arrête la requête Ajax proprement
+  $content = ob_get_clean();
+  wp_send_json_success(array('content' => $content));
+
+  wp_die();
 }
 
-add_action('wp_ajax_loadmore_photos', 'loadmore_photos_handler');
-add_action('wp_ajax_nopriv_loadmore_photos', 'loadmore_photos_handler');
+add_action('wp_ajax_filter_photos', 'filter_photos_handler');
+add_action('wp_ajax_nopriv_filter_photos', 'filter_photos_handler');
+
 
 
 

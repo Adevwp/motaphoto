@@ -248,28 +248,13 @@ Class non utilisée
   max-width: 1440px;
 }
 
-.filter-section {
-  background-color: purple;
-  display: flex;
-  justify-content: space-between;
-  padding: 0 90px;
-  margin: 55px auto 20px auto;
-}
-.filter-section__photo-select {
-  background-color: yellow;
-}
-.filter-section__date-sort {
-  background-color: yellowgreen;
-}
-
 .photos-list-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
   align-items: center;
   width: 75vw;
-  margin: 20px auto 0 auto;
-  background-color: cadetblue;
+  margin: 0 auto;
 }
 
 .image-catalogue {
@@ -731,4 +716,4 @@ p {
   /* Ajoutez vos styles desktop ici */
 }
 
-/*# sourceMappingURL=style.css.map */
+/*# sourceMappingURL=style.cs.map */

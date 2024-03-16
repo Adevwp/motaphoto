@@ -47,3 +47,40 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     };
 });
+
+
+// SINGLE PHOTO NEXT AND PREV PHOTO THUMBNAIL
+
+document.addEventListener('DOMContentLoaded', function () {
+    const arrowLeft = document.querySelector('.arrow-left');
+    const arrowRight = document.querySelector('.arrow-right');
+    const navigationCardLeft = document.querySelector('.navigation-card-left');
+    const navigationCardRight = document.querySelector('.navigation-card-right');
+
+    function showElement(element) {
+        if (element) {
+            element.style.display = 'block';
+        }
+    }
+
+    function hideElement(element) {
+        if (element) {
+            element.style.display = 'none';
+        }
+    }
+
+    if (arrowLeft && navigationCardLeft) {
+        arrowLeft.addEventListener('mouseenter', () => showElement(navigationCardLeft));
+        arrowLeft.addEventListener('mouseleave', () => hideElement(navigationCardLeft));
+        arrowLeft.addEventListener('focus', () => showElement(navigationCardLeft));
+        arrowLeft.addEventListener('blur', () => hideElement(navigationCardLeft));
+    }
+
+    if (arrowRight && navigationCardRight) {
+        arrowRight.addEventListener('mouseenter', () => showElement(navigationCardRight));
+        arrowRight.addEventListener('mouseleave', () => hideElement(navigationCardRight));
+        arrowRight.addEventListener('focus', () => showElement(navigationCardRight));
+        arrowRight.addEventListener('blur', () => hideElement(navigationCardRight));
+    }
+});
+

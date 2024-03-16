@@ -8,7 +8,6 @@
     }
 }
 
-
 .hero-header {
     width: 100%;
     height: auto;
@@ -66,6 +65,24 @@
 .site-main {
     max-width: 1440px;
 }
+.filter-section {
+    background-color: purple;
+    display:flex;
+    justify-content: space-between;
+    padding: 0 90px;
+    margin: 55px auto 20px auto; 
+
+    &__photo-select {
+        background-color: yellow;
+    }
+
+    &__date-sort {
+        background-color: yellowgreen;
+    }
+
+}
+
+// PHOTO LIST CONTAINER
 
 .photos-list-container {
     display: flex;
@@ -73,7 +90,8 @@
     justify-content: space-around;
     align-items: center;
     width: 75vw;
-    margin: 0 auto;    
+    margin: 20px auto 0 auto;   
+    background-color: cadetblue;
 }
 
 .image-catalogue {
@@ -102,8 +120,6 @@
 .photo-item:hover .overlay-catalogue {
     opacity: 1;
 }
-
-
 
 
 // LOAD MORE BUTTON

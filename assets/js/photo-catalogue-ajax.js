@@ -1,3 +1,4 @@
+// LOAD MORE PHOTOS
 jQuery(document).ready(function($) {
     const ajaxurl = photo_catalogue_ajax_params.ajaxurl;
     let page = 2; // Commence à la page 2 car la première page est déjà chargée todo
@@ -13,13 +14,44 @@ console.log(page); // todo supp
         console.log("Envoi des données : ", data); // todo supp
 
         $.post(ajaxurl, data, function(response) {
-            console.log("Réponse reçue : ", response); // todo supp
-            if(response) {
-                $("#photos-list").append(response); // Ajoute les nouveaux posts à la liste todo
-                page++; // Incrémente le numéro de page
+            if(response.success) {
+                $("#photos-list").append(response.data.content);
+                page++;
             } else {
-                $('#loadmore-btn').hide(); // Cache le bouton s'il n'y a plus de posts à charger
+                $('#loadmore-btn').hide();
+                $("#photos-list").append('<p class="noresult">' + response.data.message + '</p>');
+
             }
+        }, 'json');
+        
+    });
+});
+
+
+// FILTER PHOTOS
+jQuery(document).ready(function($) {
+    $('#photo-category-select, #photo-format-select, #filter-section_date-sort').change(function() {
+        const category = $('#photo-category-select').val();
+        const format = $('#photo-format-select').val();
+        const order = $('#filter-section_date-sort').val();
+        const ajaxurl = photo_catalogue_ajax_params.ajaxurl;
+
+
+        $.ajax({
+            url: ajaxurl,
+            type: 'POST',
+            data: {
+                action: 'filter_photos',
+                category: category,
+                format: format,
+                order: order
+            },
+            success: function(response) {
+                if(response.success) {
+                    $("#photos-list").html(response.data.content);
+                }
+            },
+            dataType: 'json'
         });
     });
 });
