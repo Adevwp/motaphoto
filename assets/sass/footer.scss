@@ -1,14 +1,13 @@
 /* FOOTER STYLE*/
 
 .site-footer {
-    background-color: pink;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    height: 60px;
     max-width: 1440px;
     width: 100vw;
+    height: 60px;
     border-top: 1px solid black;
 
     &__menu {

@@ -1,104 +1,94 @@
 .lightbox-popup {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.6);
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    z-index: 10;
-    
-    button {
-        opacity: 1;
-        cursor: pointer;
-        transition: opacity .3s;
-        background: none;
-        color: white;
-        border: none;
-    }
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 10; 
 
-    button:hover {
-        opacity: .5;
-    }
+  &__close,
+  &__next,
+  &__prev {
+    position: absolute;
+    z-index: 12;
+    cursor: pointer;
+    background: none;
+    border: none;
+    opacity: 1;
+    transition: opacity .3s;
 
-    &__close,
-    &__next,
-    &__prev {
-      position: absolute;
-      z-index: 12;
-      cursor: pointer;
+    &:hover {
+      opacity: .5;
     }
-  
-    &__close {
-        top: 20px;
-        right: 20px;
-        border:none;
-        width: 23px;
-        height: 23px;
-        padding: 0;
-    }
-  
-    &__next {
-      right: 20px;
-      top: 50%;
-    }
-  
-    &__prev {
-      left: 20px;
-      top: 50%;
-    }
-  
-    &__container {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width:80vw;
-      max-height: 80vh;
-      margin: 0 50px;
-      background-color: bisque; // todo supprimer
-      z-index: 11;
-  
-      img {
-        max-width: 90%;
-        max-height: 90%;
-      }
-    }
-
-    &__info {
-        display: flex;
-        justify-content: space-between;
-        width: 80vw;
-        padding: 5px 19px 5px 5px;
-        color: white;
-        font-family: 'Space-Mono';
-        font-size: 0.875rem;
-        font-weight: 400; 
-        text-transform: uppercase; 
-    }
-
   }
+
+  &__close {
+    top: 20px;
+    right: 20px;
+    width: 23px;
+    height: 23px;
+    padding: 0;
+  }
+
+  &__next {
+    right: 20px;
+    top: 50%;
+  }
+
+  &__prev {
+    left: 20px;
+    top: 50%;
+  }
+
+  &__container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width:80vw;
+    max-height: 80vh;
+    margin: 0 50px;
+    z-index: 11;
+
+    img {
+      max-width: 90%;
+      max-height: 90%;
+    }
+  }
+
+  &__info {
+    display: flex;
+    justify-content: space-between;
+    width: 40%;
+    padding: 5px 19px 5px 5px;
+    color: white;
+    font-family: 'Space-Mono';
+    font-size: 0.875rem;
+    font-weight: 400; 
+    text-transform: uppercase; 
+  }
+}
   
   /*** Media Queries ***/
-/* Mobile Styles */
+  /* Mobile Styles */
 @media only screen and (max-width: 767px) {
-    /* Ajoutez  styles mobiles ici */
-    .lightbox-popup__container {
-        width: 70vw;
-    }
+  .lightbox-popup__container {
+    width: 70vw;
+  }
 
-    .lightbox-popup__info {
-        max-width: 30vw;
-    }
+  .lightbox-popup__info {
+    max-width: 40%;
+  }
 }
 
-/* Tablet Styles */
-@media only screen and (min-width: 768px) and (max-width: 991px) {
-    /* Ajoutez styles tablette ici */
-    
-    .lightbox-popup__info {
-        max-width: 55vw;
-    }
+  /* Tablet Styles */
+@media only screen and (min-width: 768px) and (max-width: 991px) {  
+  .lightbox-popup__info {
+    max-width: 55vw;
+  }
 }

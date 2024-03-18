@@ -1,6 +1,4 @@
     <!-- FOOTER -->
-    <!-- TODO test footer -->
-
     <footer class="site-footer">
         <nav class="site-footer__menu">
             <?php wp_nav_menu( // Call footer menu

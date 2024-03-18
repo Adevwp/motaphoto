@@ -5,11 +5,10 @@
     z-index: 1; /* Sit on top */
     left: 0;
     top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
+    width: 100%; 
+    height: 100%; 
     overflow: auto; /* Enable scroll if needed */
-    /*background-color: rgb(0,0,0);  Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    background-color: rgba(0,0,0,0.4); /* Black with opacity */
     opacity: 0; /* Start with modal being transparent */
     animation: fadeIn 0.5s ease-out forwards; /* Apply the fade-in animation when shown */
 }
@@ -29,23 +28,23 @@
     height: 825px;
 }
 
-/* The Close Button */
+/* The Close Button inside modal */
 .contact-modal__content_close {
     color: #C4C4C4;
     float: right;
     font-size: 12px;
     font-weight: 600;
     padding-bottom: 2px;
+
+    &:hover,
+    &:focus {
+        color: #313144;
+        text-decoration: none;
+        cursor: pointer;
+    }
 }
 
-.contact-modal__content_close:hover,
-.contact-modal__content_close:focus {
-    color: #313144;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-/* Modal Body*/
+/* Modal Body Styles */
 .contact-modal__content_body {
     padding: 2px 26px;
     margin: auto;
@@ -53,23 +52,21 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    /*width: 100%;*/
-    background-color: violet;
 
     #wpcf7-f42-o1 {
-        background-color: beige;
         margin-top: 10px;
     }
     
-    input {
+    input, textarea {
         width: 263px;
-        height: 40px;
         border-radius: 8px;
         border: 1px solid #B8BBC2;
-       /* margin-top: 0px;
-        padding: 8px 15px;*/
         color: #000;
         font-family: "Poppins";
+    }
+
+    input {
+        height: 40px;
         font-size: 0.875rem;
         font-weight: 500;
     }
@@ -78,22 +75,14 @@
         height: 50px;
         border-radius: 2px;
         background-color: #D8D8D8;
-        border-color: #D8D8D8 ;
-        /*display: flex;
-        justify-content: center;
-        align-content: center;*/
-       /* margin-top: -10px;
-        margin-bottom: 0px;*/
+        border-color: transparent;
         font-size: 14px;
         font-family: "Space Mono";
         font-weight: 400;
     }
 
     textarea {
-        width: 263px;
         height: 210px;
-        border-radius: 8px;
-        border: 1px solid #B8BBC2 ;
     }
 
     label {
@@ -101,7 +90,7 @@
     }
 }
 
-/*Contact form message */
+/*Contact form message styles */
 .wpcf7 form .wpcf7-response-output {
     margin: -0.9em 0.5em 1em;
     padding-right: 0.5em;
@@ -110,29 +99,23 @@
     font-family: 'poppins';
     text-align: center;
     max-width: 275px;
-}
-
-.wpcf7 form.invalid .wpcf7-response-output {
-    border: 2px solid #FE5858;
+    
+    &.invalid {
+        border-color: #FE5858;
+    }
 }
 
 .wpcf7-spinner {
     display:none;
 }
 
-
 /*** Media Queries - RESPONSIVE ***/
 
 /* Mobile Styles */
 @media only screen and (max-width: 767px) {
     .contact-modal__content {
-        background-color: #fefefe;
-        margin: 10% auto;  /*10% from the top and centered */
-        padding-top: 4px;
-        border: 3px solid #000;
         width: 286px;
-        height: 808px;
-        
+        height: 750px;
     }
 
     .contact-modal__content_body {
@@ -146,9 +129,18 @@
         }
     }
 
-}
-
-    /* Tablet Styles */
-@media only screen and (min-width: 768px) and (max-width: 991px) {
-   
+    .contact-modal__content_header {
+        position: relative; // Assurez-vous que le parent a une position relative
+        width: 100%;
+        height: 60px;
+      
+        img {
+          width: 100%; 
+          height: 48px; 
+          object-fit: fill; 
+          position: absolute; 
+          bottom: 0;
+          left: 0;
+        }
+    }   
 }

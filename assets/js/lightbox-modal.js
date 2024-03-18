@@ -3,7 +3,7 @@ jQuery(document).ready(function($) {
     let photos = [];
     let currentIndex = 0;
 
-    // Mise à jour de la liste des photos
+    // Update of photo list 
     function loadPhoto() {
         $('.photo-block').each(function() {
             const photoElement = $(this);
@@ -16,12 +16,12 @@ jQuery(document).ready(function($) {
         });
     }
 
-    // Fonction pour ouvrir la lightbox
+    // Function to open Lightbox
     function displayLightbox(index) {
         if (index < 0) {
-            index = photos.length - 1;  // Si index est négatif, aller à la dernière photo
+            index = photos.length - 1;  // If index is, go to the last photo in order to create a loop
         } else if (index >= photos.length) {
-            index = 0;  // Si index dépasse, revenir à la première photo
+            index = 0;  // If index is higher, go to the first picture
         }
 
         const photo = photos[index];
@@ -33,13 +33,13 @@ jQuery(document).ready(function($) {
         $('body, html').css('overflow', 'hidden');
     }
 
-    // Ouverture de la lightbox au clic
+    // On click on icon fullscreen open Lightbox
     $('.photo-block').on('click', '.photo-fullscreen', function() {
         const index = $(this).closest('.photo-block').index();
         displayLightbox(index);
     });
 
-    // Navigation entre les images
+    // Navigation between pictures before anf after
     $(".lightbox-popup__prev").on('click', function() {
         displayLightbox(currentIndex - 1);
     });
@@ -48,32 +48,26 @@ jQuery(document).ready(function($) {
         displayLightbox(currentIndex + 1);
     });
 
- 
-
-
-// Fermeture de la lightbox lors du clic sur le bouton de fermeture
-$(".lightbox-popup__close").on('click', function(event) {
-    console.log('Close button clicked');
-    event.stopPropagation(); // Empêche la propagation pour que l'événement ne remonte pas au conteneur de la lightbox
-    lightbox.css('display', 'none');
-    $('body, html').css('overflow', '');
-});
-
-// Fermeture de la lightbox lors du clic en dehors de l'image (sur la lightbox elle-même)
-lightbox.on('click', function(event) {
-    if (event.target == this) { // Vérifie si l'événement est déclenché par la lightbox et non par des éléments enfants
-        console.log('Lightbox background clicked');
+    // On clic on div close, close the Lightbox
+    $(".lightbox-popup__close").on('click', function(event) {
+        event.stopPropagation(); // Stop propagation of clic outside the element
         lightbox.css('display', 'none');
         $('body, html').css('overflow', '');
-    }
-});
+    });
 
+    // On clic outside Lightbox content, close it 
+    lightbox.on('click', function(event) {
+        if (event.target == this) { // Vérify if it is #ligthbox
+            lightbox.css('display', 'none');
+            $('body, html').css('overflow', '');
+        }
+    });
 
-   // Empêcher la propagation de l'événement de clic sur l'image pour éviter la fermeture
-   $(".lightbox-popup__container").on('click', function(event) {
-    event.stopPropagation();
-});
+   // No propagation in container of lighbox 
+    $(".lightbox-popup__container").on('click', function(event) {
+        event.stopPropagation(); // Stop propagation of clic outside the element
+    });
 
-    // Mise à jour initiale des photos
+    // Initialise array photo after all function and event
     loadPhoto();
 });

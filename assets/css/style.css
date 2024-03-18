@@ -6,11 +6,10 @@
   z-index: 1; /* Sit on top */
   left: 0;
   top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
+  width: 100%;
+  height: 100%;
   overflow: auto; /* Enable scroll if needed */
-  /*background-color: rgb(0,0,0);  Fallback color */
-  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+  background-color: rgba(0, 0, 0, 0.4); /* Black with opacity */
   opacity: 0; /* Start with modal being transparent */
   animation: fadeIn 0.5s ease-out forwards; /* Apply the fade-in animation when shown */
 }
@@ -33,7 +32,7 @@
   height: 825px;
 }
 
-/* The Close Button */
+/* The Close Button inside modal */
 .contact-modal__content_close {
   color: #C4C4C4;
   float: right;
@@ -41,15 +40,13 @@
   font-weight: 600;
   padding-bottom: 2px;
 }
-
-.contact-modal__content_close:hover,
-.contact-modal__content_close:focus {
+.contact-modal__content_close:hover, .contact-modal__content_close:focus {
   color: #313144;
   text-decoration: none;
   cursor: pointer;
 }
 
-/* Modal Body*/
+/* Modal Body Styles */
 .contact-modal__content_body {
   padding: 2px 26px;
   margin: auto;
@@ -57,22 +54,19 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  /*width: 100%;*/
-  background-color: violet;
 }
 .contact-modal__content_body #wpcf7-f42-o1 {
-  background-color: beige;
   margin-top: 10px;
 }
-.contact-modal__content_body input {
+.contact-modal__content_body input, .contact-modal__content_body textarea {
   width: 263px;
-  height: 40px;
   border-radius: 8px;
   border: 1px solid #B8BBC2;
-  /* margin-top: 0px;
-   padding: 8px 15px;*/
   color: #000;
   font-family: "Poppins";
+}
+.contact-modal__content_body input {
+  height: 40px;
   font-size: 0.875rem;
   font-weight: 500;
 }
@@ -80,27 +74,19 @@
   height: 50px;
   border-radius: 2px;
   background-color: #D8D8D8;
-  border-color: #D8D8D8;
-  /*display: flex;
-  justify-content: center;
-  align-content: center;*/
-  /* margin-top: -10px;
-   margin-bottom: 0px;*/
+  border-color: transparent;
   font-size: 14px;
   font-family: "Space Mono";
   font-weight: 400;
 }
 .contact-modal__content_body textarea {
-  width: 263px;
   height: 210px;
-  border-radius: 8px;
-  border: 1px solid #B8BBC2;
 }
 .contact-modal__content_body label {
   color: #313144;
 }
 
-/*Contact form message */
+/*Contact form message styles */
 .wpcf7 form .wpcf7-response-output {
   margin: -0.9em 0.5em 1em;
   padding-right: 0.5em;
@@ -110,9 +96,8 @@
   text-align: center;
   max-width: 275px;
 }
-
-.wpcf7 form.invalid .wpcf7-response-output {
-  border: 2px solid #FE5858;
+.wpcf7 form .wpcf7-response-output.invalid {
+  border-color: #FE5858;
 }
 
 .wpcf7-spinner {
@@ -123,12 +108,8 @@
 /* Mobile Styles */
 @media only screen and (max-width: 767px) {
   .contact-modal__content {
-    background-color: #fefefe;
-    margin: 10% auto; /*10% from the top and centered */
-    padding-top: 4px;
-    border: 3px solid #000;
     width: 286px;
-    height: 808px;
+    height: 750px;
   }
   .contact-modal__content_body input {
     width: 190px;
@@ -137,8 +118,20 @@
     width: 190px;
     height: 149px;
   }
+  .contact-modal__content_header {
+    position: relative;
+    width: 100%;
+    height: 60px;
+  }
+  .contact-modal__content_header img {
+    width: 100%;
+    height: 48px;
+    object-fit: fill;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
 }
-/* Tablet Styles */
 @font-face {
   font-family: "Poppins";
   src: url("../fonts/poppins/Poppins-Light.woff2") format("woff2"), url("../fonts/Poppins-LightNomDeLaPolice.woff") format("woff");
@@ -177,14 +170,13 @@
 }
 /* FOOTER STYLE*/
 .site-footer {
-  background-color: pink;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  height: 60px;
   max-width: 1440px;
   width: 100vw;
+  height: 60px;
   border-top: 1px solid black;
 }
 .site-footer__menu {
@@ -458,26 +450,21 @@
   flex-direction: column;
   z-index: 10;
 }
-.lightbox-popup button {
-  opacity: 1;
-  cursor: pointer;
-  transition: opacity 0.3s;
-  background: none;
-  color: white;
-  border: none;
-}
-.lightbox-popup button:hover {
-  opacity: 0.5;
-}
 .lightbox-popup__close, .lightbox-popup__next, .lightbox-popup__prev {
   position: absolute;
   z-index: 12;
   cursor: pointer;
+  background: none;
+  border: none;
+  opacity: 1;
+  transition: opacity 0.3s;
+}
+.lightbox-popup__close:hover, .lightbox-popup__next:hover, .lightbox-popup__prev:hover {
+  opacity: 0.5;
 }
 .lightbox-popup__close {
   top: 20px;
   right: 20px;
-  border: none;
   width: 23px;
   height: 23px;
   padding: 0;
@@ -494,10 +481,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
   width: 80vw;
   max-height: 80vh;
   margin: 0 50px;
-  background-color: bisque;
   z-index: 11;
 }
 .lightbox-popup__container img {
@@ -507,7 +494,7 @@
 .lightbox-popup__info {
   display: flex;
   justify-content: space-between;
-  width: 80vw;
+  width: 40%;
   padding: 5px 19px 5px 5px;
   color: white;
   font-family: "Space-Mono";
@@ -519,17 +506,15 @@
 /*** Media Queries ***/
 /* Mobile Styles */
 @media only screen and (max-width: 767px) {
-  /* Ajoutez  styles mobiles ici */
   .lightbox-popup__container {
     width: 70vw;
   }
   .lightbox-popup__info {
-    max-width: 30vw;
+    max-width: 40%;
   }
 }
 /* Tablet Styles */
 @media only screen and (min-width: 768px) and (max-width: 991px) {
-  /* Ajoutez styles tablette ici */
   .lightbox-popup__info {
     max-width: 55vw;
   }
@@ -803,7 +788,7 @@ p {
 /* Mobile Styles */
 @media only screen and (max-width: 767px) {
   body {
-    background-color: black; /*TODO à supp*/
+    background-color: palegreen; /*TODO à supp*/
     max-width: 767px;
   }
 }
