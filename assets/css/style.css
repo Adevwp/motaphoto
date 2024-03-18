@@ -197,6 +197,8 @@
   color: #000;
 }
 
+/*** Media Queries - RESPONSIVE ***/
+/* Mobile Styles */
 @media (max-width: 767px) {
   .site-footer {
     height: 208px;
@@ -352,89 +354,60 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 72px;
   width: 100vw;
   max-width: 1440px;
-  padding: 0 146px;
-  background-color: #FFF;
+  height: 80px;
+  margin: 0 auto;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.09);
+  background-color: yellowgreen;
+}
+.site-header__logo {
+  padding-left: 146px;
 }
 .site-header__logo img {
   width: 216px;
   height: 14px;
 }
-.site-header .burger-menu-button {
+.site-header__menu-burger {
   display: none;
+  flex-direction: column;
+  gap: 5px;
+  width: 28px;
+  height: 19px;
+  background: none;
+  border: none;
+  position: relative;
+  cursor: pointer;
 }
-.site-header__menu {
-  /* ul {
-  display: flex;
-  justify-content: center;
-  flex-direction: row;
-  list-style: none;
-  gap: 45px;
-  }*/
+.site-header__menu-burger span {
+  display: block;
+  height: 2px;
+  width: 100%;
+  background: #000;
+  transition: all 0.3s ease-in-out;
 }
-.site-header__menu ul {
+.site-header__menu-navigation {
+  padding-right: 146px;
+}
+.site-header__menu-navigation ul {
   display: flex;
   list-style: none;
   margin: 0;
   padding: 0;
 }
-.site-header__menu ul li {
+.site-header__menu-navigation ul li {
   margin: 0 18px;
 }
-.site-header__menu a {
+.site-header__menu-navigation ul a {
   text-decoration: none;
   color: #000;
 }
 
-/*** MEDIA QUERIES - RESPONSIVE ***/
+/*** Media Queries - RESPONSIVE ***/
 /* Mobile Styles */
 @media (max-width: 767px) {
-  .site-header {
-    padding: 0 40px;
-  }
-  .site-header__menu ul li a {
-    font-family: "Space Mono", sans-serif;
-    font-size: 44px;
-    font-style: normal;
-    font-weight: 400;
-    text-transform: uppercase;
-  }
-  .site-header__logo img {
-    width: 138px;
-    height: 9px;
-  }
-  .site-header .burger-menu-button {
-    display: block;
-    background: none;
-    border: none;
-    cursor: pointer;
-  }
-  .site-header.open {
+  .site-header__menu-burger {
     display: flex;
-    flex-direction: column;
-    position: absolute;
-    top: 72px;
-    width: 100%;
-    background-color: #E00000;
-    color: #FFF;
-  }
-  .site-header.open ul {
-    width: 100%;
-    padding: 0;
-    margin: 0;
-    list-style: none;
-    text-align: center;
-  }
-  .site-header.open ul li {
-    padding: 18px;
-  }
-}
-/* Tablet style */
-@media only screen and (min-width: 768px) and (max-width: 991px) {
-  .site-header {
-    padding: 0 50px;
   }
 }
 .lightbox-popup {

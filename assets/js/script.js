@@ -85,5 +85,21 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 // MENU BURGER
+    /* open burger menu on click */
+const burgerMenu = document.querySelector('.site-header__menu-burger');
+const fullScreenMenu = document.querySelector('.site-header__menu-navigation');
 
+burgerMenu.addEventListener('click', () => {
+    burgerMenu.classList.toggle('active');
+    fullScreenMenu.classList.toggle('active');
+});
 
+    /* close burger on click on nav link*/ 
+const navLinks = document.querySelectorAll('.site-header__menu-navigation li'); /* creation of variable navLinks */ 
+
+navLinks.forEach(link => {    // loop for all li 
+  link.addEventListener('click', () => { /* action of click on a li will : */ 
+    burgerMenu.classList.remove('active'); /* delete active class to .burgermenu and below on .burgermenu-open in order to close the fullscreen menu  */ 
+    fullScreenMenu.classList.remove('active'); 
+    });
+});

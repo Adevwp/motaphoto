@@ -17,20 +17,22 @@
                 <img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo-motaphoto.svg" alt="Logo Nathalie MOTA Photgraphe">
             </a>
         </div>
-
-        <!-- Menu burger bouton -->
-        <button class="burger-menu-button" aria-label="Toggle menu" aria-expanded="false" data-icon-open="<?php echo get_template_directory_uri(); ?>/assets/images/icon-menu-open.svg" data-icon-close="<?php echo get_template_directory_uri(); ?>/assets/images/icon-menu-close.svg">
-            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/icon-menu-open.svg" alt="Open Menu">
+        
+        <!-- Button Menu burger  -->
+        <button class="site-header__menu-burger" aria-label="Toggle menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
         </button>
 
-
-        
-        <nav class="site-header__menu">
+        <nav class="site-header__menu-navigation" aria-label="Menu principal">
+            <!-- Content of Menu -->
+            
             <?php wp_nav_menu( // Call main menu
                 array( 
                 'theme_location' => 'main', 
                 'container' => 'ul', // No div 
-                'menu_class' => 'site-header__menu__ul', // custom class 
+                'menu_class' => 'site-header__menu-navigation-ul', // custom class 
                 ) 
             ); ?>
         </nav>
