@@ -10,19 +10,29 @@
 <body <?php body_class(); ?>>
     <?php wp_body_open(); ?>
 
-        <!-- HEADER -->
-        <header class="site-header">
-            <div class="site-header__logo">
-                <a href="<?php echo home_url( '/' ); ?>">
-                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo-motaphoto.svg" alt="Logo Nathalie MOTA Photgraphe">
-                </a>
-            </div>
-            <nav class="site-header__menu">
-                <?php wp_nav_menu( // Call main menu
-                    array( 'theme_location' => 'main', 
-                    'container' => 'ul', // No div 
-                    'menu_class' => 'site-header__menu__ul', // custom class 
-                    ) 
-                ); ?>
-            </nav>
-            </header>
+    <!-- HEADER -->
+    <header class="site-header">
+        <div class="site-header__logo">
+            <a href="<?php echo home_url( '/' ); ?>">
+                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo-motaphoto.svg" alt="Logo Nathalie MOTA Photgraphe">
+            </a>
+        </div>
+
+        <!-- Menu burger bouton -->
+        <button class="burger-menu-button" aria-label="Toggle menu" aria-expanded="false" data-icon-open="<?php echo get_template_directory_uri(); ?>/assets/images/icon-menu-open.svg" data-icon-close="<?php echo get_template_directory_uri(); ?>/assets/images/icon-menu-close.svg">
+            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/icon-menu-open.svg" alt="Open Menu">
+        </button>
+
+
+        
+        <nav class="site-header__menu">
+            <?php wp_nav_menu( // Call main menu
+                array( 
+                'theme_location' => 'main', 
+                'container' => 'ul', // No div 
+                'menu_class' => 'site-header__menu__ul', // custom class 
+                ) 
+            ); ?>
+        </nav>
+
+    </header>

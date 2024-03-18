@@ -1,32 +1,112 @@
-.site-header{
-    background-color: greenyellow;
+.site-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-   /* width: 100vw;*/
+    height: 72px;
+    width: 100vw;    
     max-width: 1440px;
-   /* margin: auto;
-    padding-left: 146px;
-    padding-right: 146px;*/
+    padding: 0 146px;
+    background-color: #FFF;
 
-    ul {
+    &__logo img {
+        width: 216px;
+        height: 14px;
+    }
+
+    .burger-menu-button {
+        display: none; // Cache par défaut
+    }
+    
+    &__menu {      
+        ul {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            li {
+                margin: 0 18px;
+            }
+        }
+
+         /* ul {
         display: flex;
         justify-content: center;
         flex-direction: row;
         list-style: none;
         gap: 45px;
+        }*/
+        
+
+        a {
+            text-decoration: none;
+            color: #000;
+        }
     }
 
-    a {
-        text-decoration: none;
-        color: #000;
-    }
 }
 
 
+/*** MEDIA QUERIES - RESPONSIVE ***/
 
-/* TODO 
-Class non utilisée 
-.site-header__logo 
+    /* Mobile Styles */
+@media (max-width: 767px) {
+    .site-header {
+        padding: 0 40px;
 
-*/ 
+        &__menu {
+            ul {
+                li {
+                    a {
+                        font-family: "Space Mono", sans-serif;
+                        font-size: 44px;
+                        font-style: normal;
+                        font-weight: 400;
+                        text-transform: uppercase;
+                    }
+                }
+            }
+        }
+        
+        &__logo img {
+            width: 138px;
+            height: 9px;
+        }
+
+        .burger-menu-button {
+            display: block;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+        
+        &.open {
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            top: 72px; // hauteur de l'entête
+            width: 100%;
+            background-color: #E00000;
+            color: #FFF;
+
+            ul {
+                width: 100%;
+                padding: 0;
+                margin: 0;
+                list-style: none;
+                text-align: center;
+
+                li {
+                    padding: 18px;
+                }
+            }
+        }
+
+    }
+}
+
+    /* Tablet style */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    .site-header {
+        padding: 0 50px;
+    }
+}

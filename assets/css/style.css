@@ -26,7 +26,7 @@
 /* Modal Content Block */
 .contact-modal__content {
   background-color: #fefefe;
-  margin: 15% auto; /*15% from the top and centered */
+  margin: 10% auto; /*10% from the top and centered */
   padding-top: 4px;
   border: 3px solid #000;
   width: 597px;
@@ -65,8 +65,8 @@
   margin-top: 10px;
 }
 .contact-modal__content_body input {
-  height: 40px;
   width: 263px;
+  height: 40px;
   border-radius: 8px;
   border: 1px solid #B8BBC2;
   /* margin-top: 0px;
@@ -91,8 +91,8 @@
   font-weight: 400;
 }
 .contact-modal__content_body textarea {
-  height: 210px;
   width: 263px;
+  height: 210px;
   border-radius: 8px;
   border: 1px solid #B8BBC2;
 }
@@ -119,6 +119,26 @@
   display: none;
 }
 
+/*** Media Queries - RESPONSIVE ***/
+/* Mobile Styles */
+@media only screen and (max-width: 767px) {
+  .contact-modal__content {
+    background-color: #fefefe;
+    margin: 10% auto; /*10% from the top and centered */
+    padding-top: 4px;
+    border: 3px solid #000;
+    width: 286px;
+    height: 808px;
+  }
+  .contact-modal__content_body input {
+    width: 190px;
+  }
+  .contact-modal__content_body textarea {
+    width: 190px;
+    height: 149px;
+  }
+}
+/* Tablet Styles */
 @font-face {
   font-family: "Poppins";
   src: url("../fonts/poppins/Poppins-Light.woff2") format("woff2"), url("../fonts/Poppins-LightNomDeLaPolice.woff") format("woff");
@@ -162,10 +182,11 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  border-top: 1px solid black;
   height: 60px;
+  max-width: 1440px;
+  width: 100vw;
+  border-top: 1px solid black;
 }
-
 .site-footer__menu {
   display: flex;
   flex-direction: row;
@@ -184,11 +205,19 @@
   color: #000;
 }
 
-/* TODO 
-Class non utilisée 
-.site-footer__menu
-.site-header__menu
-*/
+@media (max-width: 767px) {
+  .site-footer {
+    height: 208px;
+    max-width: 767px;
+    width: 100vw;
+  }
+  .site-footer__menu ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+  }
+}
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -328,33 +357,94 @@ Class non utilisée
 }
 
 .site-header {
-  background-color: greenyellow;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* width: 100vw;*/
+  height: 72px;
+  width: 100vw;
   max-width: 1440px;
-  /* margin: auto;
-   padding-left: 146px;
-   padding-right: 146px;*/
+  padding: 0 146px;
+  background-color: #FFF;
 }
-.site-header ul {
+.site-header__logo img {
+  width: 216px;
+  height: 14px;
+}
+.site-header .burger-menu-button {
+  display: none;
+}
+.site-header__menu {
+  /* ul {
   display: flex;
   justify-content: center;
   flex-direction: row;
   list-style: none;
   gap: 45px;
+  }*/
 }
-.site-header a {
+.site-header__menu ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.site-header__menu ul li {
+  margin: 0 18px;
+}
+.site-header__menu a {
   text-decoration: none;
   color: #000;
 }
 
-/* TODO 
-Class non utilisée 
-.site-header__logo 
-
-*/
+/*** MEDIA QUERIES - RESPONSIVE ***/
+/* Mobile Styles */
+@media (max-width: 767px) {
+  .site-header {
+    padding: 0 40px;
+  }
+  .site-header__menu ul li a {
+    font-family: "Space Mono", sans-serif;
+    font-size: 44px;
+    font-style: normal;
+    font-weight: 400;
+    text-transform: uppercase;
+  }
+  .site-header__logo img {
+    width: 138px;
+    height: 9px;
+  }
+  .site-header .burger-menu-button {
+    display: block;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  .site-header.open {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 72px;
+    width: 100%;
+    background-color: #E00000;
+    color: #FFF;
+  }
+  .site-header.open ul {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    text-align: center;
+  }
+  .site-header.open ul li {
+    padding: 18px;
+  }
+}
+/* Tablet style */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .site-header {
+    padding: 0 50px;
+  }
+}
 .lightbox-popup {
   display: none;
   position: fixed;
@@ -362,7 +452,7 @@ Class non utilisée
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0.6);
   justify-content: center;
   align-items: center;
   flex-direction: column;
@@ -709,10 +799,9 @@ p {
   font-size: 1rem;
 }
 
-/*** Media Queries ***/
+/*** Media Queries - RESPONSIVE ***/
 /* Mobile Styles */
 @media only screen and (max-width: 767px) {
-  /* Ajoutez  styles mobiles ici */
   body {
     background-color: black; /*TODO à supp*/
     max-width: 767px;
@@ -720,15 +809,10 @@ p {
 }
 /* Tablet Styles */
 @media only screen and (min-width: 768px) and (max-width: 991px) {
-  /* Ajoutez styles tablette ici */
   body {
     background-color: peachpuff; /*TODO à supp*/
     max-width: 991px;
   }
-}
-/* Desktop Styles */
-@media only screen and (min-width: 992px) and (max-width: 1440px) {
-  /* Ajoutez vos styles desktop ici */
 }
 
 /*# sourceMappingURL=style.css.map */

@@ -19,12 +19,10 @@
     to { opacity: 1; } /* End with a fully visible state */
 }
 
-
-
 /* Modal Content Block */
 .contact-modal__content {
     background-color: #fefefe;
-    margin: 15% auto;  /*15% from the top and centered */
+    margin: 10% auto;  /*10% from the top and centered */
     padding-top: 4px;
     border: 3px solid #000;
     width: 597px;
@@ -64,8 +62,8 @@
     }
     
     input {
-        height: 40px;
         width: 263px;
+        height: 40px;
         border-radius: 8px;
         border: 1px solid #B8BBC2;
        /* margin-top: 0px;
@@ -92,8 +90,8 @@
     }
 
     textarea {
-        height: 210px;
         width: 263px;
+        height: 210px;
         border-radius: 8px;
         border: 1px solid #B8BBC2 ;
     }
@@ -120,4 +118,37 @@
 
 .wpcf7-spinner {
     display:none;
+}
+
+
+/*** Media Queries - RESPONSIVE ***/
+
+/* Mobile Styles */
+@media only screen and (max-width: 767px) {
+    .contact-modal__content {
+        background-color: #fefefe;
+        margin: 10% auto;  /*10% from the top and centered */
+        padding-top: 4px;
+        border: 3px solid #000;
+        width: 286px;
+        height: 808px;
+        
+    }
+
+    .contact-modal__content_body {
+        input {
+            width: 190px;
+        }
+
+        textarea {
+            width: 190px;
+            height: 149px;
+        }
+    }
+
+}
+
+    /* Tablet Styles */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+   
 }

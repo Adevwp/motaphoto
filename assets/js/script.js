@@ -84,3 +84,21 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 
+// MENU BURGER
+document.addEventListener('DOMContentLoaded', function() {
+    const menuButton = document.querySelector('.burger-menu-button');
+    const menu = document.querySelector('.site-header__menu');
+    const menuIcon = menuButton.querySelector('img');
+    const iconOpen = menuButton.getAttribute('data-icon-open');
+    const iconClose = menuButton.getAttribute('data-icon-close');
+
+    menuButton.addEventListener('click', () => {
+        const isOpen = menu.classList.contains('open');
+        menu.classList.toggle('open');
+        menuButton.setAttribute('aria-expanded', !isOpen);
+
+        // Changer l'icône
+        menuIcon.src = isOpen ? iconClose : iconOpen;
+    });
+});
+

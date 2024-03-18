@@ -113,7 +113,7 @@
                         <?php $prev_photo = motaphoto_get_adjacent_photo(get_the_ID(), 'prev'); ?>
                         <?php if ($prev_photo): ?>
                             <a href="<?php echo $prev_photo['url']; ?>">
-                                <img class="arrow-left" src="<?php echo get_template_directory_uri() . '\assets\images\arrow-left.svg'; ?> " alt="Photo précédente">
+                                <img class="arrow-left" src="<?php echo get_template_directory_uri() . '/assets/images/arrow-left.svg'; ?> " alt="Photo précédente">
                             </a> 
                         <?php endif; ?> 
                         
@@ -121,7 +121,7 @@
                         <?php $next_photo = motaphoto_get_adjacent_photo(get_the_ID(), 'next'); ?>
                         <?php if ($next_photo): ?>
                             <a href="<?php echo $next_photo['url']; ?>">
-                                <img class="arrow-right" src="<?php echo get_template_directory_uri() . '\assets\images\arrow-right.svg'; ?> " alt="Photo suivante">
+                                <img class="arrow-right" src="<?php echo get_template_directory_uri() . '/assets/images/arrow-right.svg'; ?> " alt="Photo suivante">
                             </a>
                         <?php endif; ?>
                     </div>

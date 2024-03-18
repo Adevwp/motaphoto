@@ -5,11 +5,11 @@
     </button>
         <!-- See previous picture -->
     <button class="lightbox-popup__prev">
-        <img class="prev-white" src="<?php echo get_template_directory_uri() . '\assets\images\icon-prev-white.svg'; ?> " alt="Photo précédente">
+        <img class="prev-white" src="<?php echo get_template_directory_uri() . '/assets/images/icon-prev-white.svg'; ?> " alt="Photo précédente">
     </button>
     <!-- See next picture -->
     <button class="lightbox-popup__next">    
-        <img class="next-white" src="<?php echo get_template_directory_uri() . '\assets\images\icon-next-white.svg'; ?> " alt="Photo suivante">
+        <img class="next-white" src="<?php echo get_template_directory_uri() . '/assets/images/icon-next-white.svg'; ?> " alt="Photo suivante">
     </button>
 
     <!-- Picture in full size -->

@@ -51,28 +51,28 @@ jQuery(document).ready(function($) {
  
 
 
-    // Fermeture de la lightbox lors du clic sur le bouton de fermeture
-    $(".lightbox-popup__close").on('click', function(event) {
-        console.log('Close button clicked');
-        event.stopPropagation(); // Empêche la propagation pour que l'événement ne remonte pas au conteneur de la lightbox
+// Fermeture de la lightbox lors du clic sur le bouton de fermeture
+$(".lightbox-popup__close").on('click', function(event) {
+    console.log('Close button clicked');
+    event.stopPropagation(); // Empêche la propagation pour que l'événement ne remonte pas au conteneur de la lightbox
+    lightbox.css('display', 'none');
+    $('body, html').css('overflow', '');
+});
+
+// Fermeture de la lightbox lors du clic en dehors de l'image (sur la lightbox elle-même)
+lightbox.on('click', function(event) {
+    if (event.target == this) { // Vérifie si l'événement est déclenché par la lightbox et non par des éléments enfants
+        console.log('Lightbox background clicked');
         lightbox.css('display', 'none');
         $('body, html').css('overflow', '');
-    });
-
-    // Fermeture de la lightbox lors du clic en dehors de l'image (sur la lightbox elle-même)
-    lightbox.on('click', function(event) {
-        if (event.target == this) { // Vérifie si l'événement est déclenché par la lightbox et non par des éléments enfants
-            console.log('Lightbox background clicked');
-            lightbox.css('display', 'none');
-            $('body, html').css('overflow', '');
-        }
-    });
+    }
+});
 
 
    // Empêcher la propagation de l'événement de clic sur l'image pour éviter la fermeture
    $(".lightbox-popup__container").on('click', function(event) {
-        event.stopPropagation();
-    });
+    event.stopPropagation();
+});
 
     // Mise à jour initiale des photos
     loadPhoto();
