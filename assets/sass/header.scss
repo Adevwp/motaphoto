@@ -67,7 +67,40 @@
 /*** Media Queries - RESPONSIVE ***/
     /* Mobile Styles */
 @media (max-width: 767px) {
-    .site-header__menu-burger {
-        display: flex;
-    }
+    .site-header {
+    
+        &__menu-burger {
+            display: flex;
+        
+            &.active {
+                span {
+                    &:nth-child(1) {
+                        transform: translateY(8px) rotate(45deg);
+                    }
+      
+                    &:nth-child(2) {
+                        opacity: 0;
+                    }
+      
+                    &:nth-child(3) {
+                        transform: translateY(-8px) rotate(-45deg);
+                    }
+                }
+            }
+        
+        }
+
+        &__menu-navigation {
+            display: none;
+        } 
+
+        &__menu-navigation.active {
+            display: block;
+
+            ul {
+                display: flex;
+                flex-direction: column;
+            }
+        }
+    }    
 }    
