@@ -83,7 +83,8 @@
             margin-right: 40px;
 
             &.active {
-                margin-right: -40px;
+                position: absolute;
+                right: 2%;
 
                 span {
                     &:nth-child(1) {
@@ -120,7 +121,7 @@
             visibility: visible;
             animation: nav-slidein 1s ease-in-out;
             margin-top: 72px;
-            margin-left: -402px;
+            margin-left: -450px;
             z-index: 1;
             background-color: #E00000;
             padding-right: 0;
