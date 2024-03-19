@@ -745,6 +745,12 @@
 }
 .single-photo-interaction__navigation .navigation-card-photo {
   display: flex;
+  width: 81px; /* test à partir d'ici pour mini  ature */
+  height: 71px;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -5%); /* fin du test Centre la miniature horizontalement et verticalement dans son conteneur parent */
 }
 .single-photo-interaction__navigation .navigation-card-photo a {
   text-decoration: none;
