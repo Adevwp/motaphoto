@@ -1,11 +1,12 @@
 // HERO HEADER
-@keyframes fadeIn {
-    from {
+@keyframes hero-fadeIn {
+    0% {
         opacity: 0;
-    }
-    to {
+      }
+    
+      100% {
         opacity: 1;
-    }
+      }
 }
 
 .hero-header {
@@ -17,7 +18,7 @@
     justify-content: center;
     align-items: center;
     opacity: 0;
-    animation: fadeIn 200ms forwards;
+    animation: hero-fadeIn 200ms forwards;
     background-color: aquamarine; // todo supp
 }
 
@@ -33,7 +34,7 @@
     color:rgba(255,255,255,0);
     -webkit-text-stroke: 3px white;
     opacity: 0;
-    animation: fadeIn 200ms forwards;
+    animation: hero-fadeIn 200ms forwards;
 }  
 }
 

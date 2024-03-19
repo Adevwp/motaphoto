@@ -11,16 +11,16 @@
   overflow: auto; /* Enable scroll if needed */
   background-color: rgba(0, 0, 0, 0.4); /* Black with opacity */
   opacity: 0; /* Start with modal being transparent */
-  animation: fadeIn 0.5s ease-out forwards; /* Apply the fade-in animation when shown */
+  animation: contact-fadeIn 0.5s ease-out forwards; /* Apply the fade-in animation when shown */
 }
 
-@keyframes fadeIn {
-  from {
+@keyframes contact-fadeIn {
+  0% {
     opacity: 0;
-  } /* Start with an invisible state */
-  to {
+  }
+  100% {
     opacity: 1;
-  } /* End with a fully visible state */
+  }
 }
 /* Modal Content Block */
 .contact-modal__content {
@@ -107,6 +107,9 @@
 /*** Media Queries - RESPONSIVE ***/
 /* Mobile Styles */
 @media only screen and (max-width: 767px) {
+  .contact-modal {
+    top: 72px;
+  }
   .contact-modal__content {
     width: 286px;
     height: 750px;
@@ -212,11 +215,11 @@
     gap: 24px;
   }
 }
-@keyframes fadeIn {
-  from {
+@keyframes hero-fadeIn {
+  0% {
     opacity: 0;
   }
-  to {
+  100% {
     opacity: 1;
   }
 }
@@ -229,7 +232,7 @@
   justify-content: center;
   align-items: center;
   opacity: 0;
-  animation: fadeIn 200ms forwards;
+  animation: hero-fadeIn 200ms forwards;
   background-color: aquamarine;
 }
 
@@ -245,7 +248,7 @@
   color: rgba(255, 255, 255, 0);
   -webkit-text-stroke: 3px white;
   opacity: 0;
-  animation: fadeIn 200ms forwards;
+  animation: hero-fadeIn 200ms forwards;
 }
 
 .hero-header__image {
@@ -402,31 +405,94 @@
   text-decoration: none;
   color: #000;
 }
+.site-header__menu-navigation ul a:hover {
+  font-weight: 700;
+}
 
 /*** Media Queries - RESPONSIVE ***/
 /* Mobile Styles */
 @media (max-width: 767px) {
+  .site-header {
+    height: 72px;
+    position: sticky;
+    top: 0;
+    z-index: 9999;
+  }
+  .site-header__logo {
+    padding-left: 40px;
+  }
   .site-header__menu-burger {
     display: flex;
+    margin-right: 40px;
+  }
+  .site-header__menu-burger.active {
+    margin-right: -40px;
   }
   .site-header__menu-burger.active span:nth-child(1) {
-    transform: translateY(8px) rotate(45deg);
+    transform: translateY(7px) rotate(45deg);
   }
   .site-header__menu-burger.active span:nth-child(2) {
     opacity: 0;
   }
   .site-header__menu-burger.active span:nth-child(3) {
-    transform: translateY(-8px) rotate(-45deg);
+    transform: translateY(-7px) rotate(-45deg);
   }
   .site-header__menu-navigation {
     display: none;
+    position: sticky;
+    top: 111px;
+    background-color: white;
+    color: black;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease-in;
   }
   .site-header__menu-navigation.active {
     display: block;
+    width: 100vw;
+    height: 100vh;
+    opacity: 1;
+    visibility: visible;
+    animation: nav-slidein 1s ease-in-out;
+    margin-top: 72px;
+    margin-left: -402px;
+    z-index: 1;
+    background-color: #E00000;
+    padding-right: 0;
+    padding-top: 30%;
   }
   .site-header__menu-navigation.active ul {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    gap: 18px;
+    font-size: 2.75rem;
+  }
+  .site-header__menu-navigation.active ul a {
+    color: #FFF;
+  }
+  .site-header__menu-navigation.active ul a:hover {
+    opacity: 0.5;
+    font-weight: 400;
+  }
+  @keyframes nav-slidein {
+    0% {
+      transform: translateX(35%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0%);
+      opacity: 1;
+    }
+  }
+}
+/* Tablet Styles */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .site-header__logo {
+    padding-left: 40px;
+  }
+  .site-header__menu-navigation {
+    padding-right: 40px;
   }
 }
 .lightbox-popup {
@@ -709,9 +775,10 @@
   gap: 20px;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 767px) {
   .single-photo-info {
     padding: 0 25px;
+    margin-top: 38px;
   }
   .single-photo-info_content, .single-photo-info__image {
     width: 100%;
@@ -782,6 +849,9 @@ p {
   body {
     background-color: palegreen; /*TODO à supp*/
     max-width: 767px;
+  }
+  .site-main {
+    margin-top: 0px;
   }
 }
 /* Tablet Styles */

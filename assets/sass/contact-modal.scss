@@ -10,12 +10,17 @@
     overflow: auto; /* Enable scroll if needed */
     background-color: rgba(0,0,0,0.4); /* Black with opacity */
     opacity: 0; /* Start with modal being transparent */
-    animation: fadeIn 0.5s ease-out forwards; /* Apply the fade-in animation when shown */
+    animation: contact-fadeIn 0.5s ease-out forwards; /* Apply the fade-in animation when shown */
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; } /* Start with an invisible state */
-    to { opacity: 1; } /* End with a fully visible state */
+@keyframes contact-fadeIn {
+    0% {
+        opacity: 0;
+      }
+    
+      100% {
+        opacity: 1;
+      }
 }
 
 /* Modal Content Block */
@@ -113,34 +118,39 @@
 
 /* Mobile Styles */
 @media only screen and (max-width: 767px) {
-    .contact-modal__content {
-        width: 286px;
-        height: 750px;
-    }
-
-    .contact-modal__content_body {
-        input {
-            width: 190px;
+    
+    .contact-modal {
+        top: 72px; 
+        
+        &__content {
+            width: 286px;
+            height: 750px;
         }
 
-        textarea {
-            width: 190px;
-            height: 149px;
-        }
-    }
+        &__content_body {
+            input {
+                width: 190px;
+            }
 
-    .contact-modal__content_header {
-        position: relative; // Assurez-vous que le parent a une position relative
-        width: 100%;
-        height: 60px;
-      
-        img {
-          width: 100%; 
-          height: 48px; 
-          object-fit: fill; 
-          position: absolute; 
-          bottom: 0;
-          left: 0;
+            textarea {
+                width: 190px;
+                height: 149px;
+            }
         }
-    }   
+
+        &__content_header {
+            position: relative; // Assurez-vous que le parent a une position relative
+            width: 100%;
+            height: 60px;
+        
+            img {
+            width: 100%; 
+            height: 48px; 
+            object-fit: fill; 
+            position: absolute; 
+            bottom: 0;
+            left: 0;
+            }
+        }   
+    }    
 }

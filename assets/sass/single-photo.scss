@@ -137,11 +137,12 @@
 }
 
 // Media queries pour l'adaptation mobile, similaire à l'exemple
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 767px) {
     .single-photo {
         &-info {
             padding: 0 25px; // Réduction du padding pour les petits écrans
-
+            margin-top: 38px; 
+                
             &_content,
             &__image {
                 width: 100%; // Les blocs prennent toute la largeur
