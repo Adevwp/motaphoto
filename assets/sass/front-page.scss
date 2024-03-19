@@ -10,62 +10,51 @@
 }
 
 .hero-header {
-    width: 100%;
-    height: auto;
-    max-height: 966px;
-    position: relative;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    opacity: 0;
+    justify-content: center;
+    width: 100%;
+    max-width: 1440px;
+    height: 962px;
+    margin: 0 auto; 
+    overflow: hidden; 
     animation: hero-fadeIn 200ms forwards;
     background-color: aquamarine; // todo supp
-}
 
-.hero-header__title {
-    width: 85%;
-    position: absolute;
-    left: 56%; 
-    bottom: 65%;
-    transform: translate(-50%, 50%); 
-    z-index: 1;
-   
-    h1 {
-    color:rgba(255,255,255,0);
-    -webkit-text-stroke: 3px white;
-    opacity: 0;
-    animation: hero-fadeIn 200ms forwards;
-}  
-}
 
-.hero-header__image {
-    position: relative;
-    z-index: 0; 
-    max-width: 100%;
+    &__title {
+        position: absolute;
+    
+        h1 {
+        color:rgba(255,255,255,0);
+        -webkit-text-stroke: 3px white;
+        opacity: 0;
+        animation: hero-fadeIn 1s forwards;
+        }  
+    }
 
-  
-    /*position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%); /
-    object-fit: contain;  TODO */
+    &__image {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
 
-    .photo_hero {
+        img {
+        width: 100%;
+        height: 100%;
         object-fit: cover;
+        object-position: center; 
+        }  
     }
 }
 
-/* ou ca comme para TODO pour image
-    width: 100vw;
-    height: 95vh;
-    object-fit: cover;
-*/
-
 // CONTENT
-
 .site-main {
     max-width: 1440px;
 }
+
 .filter-section {
     background-color: purple;
     display:flex;
@@ -80,46 +69,28 @@
     &__date-sort {
         background-color: yellowgreen;
     }
+}
 
+// FILTER
+.filter-section {
+    width: 80%;
 }
 
 // PHOTO LIST CONTAINER
-
 .photos-list-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    align-items: center;
-    width: 75vw;
+    width: 80%;
     margin: 20px auto 0 auto;   
     background-color: cadetblue;
-}
+    gap: 20px;
 
-.image-catalogue {
-    width: 564px;
-    height: 495px;
-    object-fit: cover;
-    margin-top: 2%; 
-}
-
-.overlay-catalogue {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 97%;
-    margin-top: 2%;
-    opacity: 0;
-    background-color: rgba(0, 0, 0, 0.7);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    transition: opacity 0.3s ease;
-}
-
-.photo-item:hover .overlay-catalogue {
-    opacity: 1;
+    .photo-block {
+        width: 564px;
+        height: 495px;
+   
+    }
 }
 
 
@@ -156,10 +127,21 @@
 /*** Media Queries - RESPONSIVE ***/
     /* Mobile Styles */
 @media (max-width: 767px) { 
+    .hero-header {
+        max-width: 767px;
+    }
 
+    // FILTER
+    .filter-section, .filter-section__photo-select {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
 }
 
   /* Tablet Styles */
 @media only screen and (min-width: 768px) and (max-width: 991px) { 
-      
+    .hero-header {
+        max-width: 991px;
+    }
 }

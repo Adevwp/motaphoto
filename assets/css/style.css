@@ -224,45 +224,54 @@
   }
 }
 .hero-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   width: 100%;
-  height: auto;
-  max-height: 966px;
-  position: relative;
+  max-width: 1440px;
+  height: 962px;
+  margin: 0 auto;
+  overflow: hidden;
+  /* 
+  v1
   display: flex;
   justify-content: center;
   align-items: center;
-  opacity: 0;
+  width: 100%;
+  height: auto;
+  max-height: 966px; */
+  /*position: relative;
+  opacity: 0;*/
   animation: hero-fadeIn 200ms forwards;
   background-color: aquamarine;
 }
-
 .hero-header__title {
-  width: 85%;
   position: absolute;
-  left: 56%;
+  /*width: 85%;
+  left: 56%; 
   bottom: 65%;
-  transform: translate(-50%, 50%);
-  z-index: 1;
+  transform: translate(-50%, 50%); 
+  z-index: 1;*/
 }
 .hero-header__title h1 {
   color: rgba(255, 255, 255, 0);
   -webkit-text-stroke: 3px white;
   opacity: 0;
-  animation: hero-fadeIn 200ms forwards;
+  animation: hero-fadeIn 1s forwards;
 }
-
 .hero-header__image {
-  position: relative;
-  z-index: 0;
-  max-width: 100%;
-  /*position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%); /
-  object-fit: contain;  TODO */
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.hero-header__image .photo_hero {
+.hero-header__image img {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
+  object-position: center;
 }
 
 /* ou ca comme para TODO pour image
@@ -288,41 +297,23 @@
   background-color: yellowgreen;
 }
 
+.filter-section {
+  width: 80%;
+}
+
 .photos-list-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  align-items: center;
-  width: 75vw;
+  /* align-items: center;*/
+  width: 80%;
   margin: 20px auto 0 auto;
   background-color: cadetblue;
+  gap: 20px;
 }
-
-.image-catalogue {
+.photos-list-container .photo-block {
   width: 564px;
   height: 495px;
-  object-fit: cover;
-  margin-top: 2%;
-}
-
-.overlay-catalogue {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 97%;
-  margin-top: 2%;
-  opacity: 0;
-  background-color: rgba(0, 0, 0, 0.7);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  transition: opacity 0.3s ease;
-}
-
-.photo-item:hover .overlay-catalogue {
-  opacity: 1;
 }
 
 .loadmore-photo-button {
@@ -355,7 +346,22 @@
 
 /*** Media Queries - RESPONSIVE ***/
 /* Mobile Styles */
+@media (max-width: 767px) {
+  .hero-header {
+    max-width: 767px;
+  }
+  .filter-section, .filter-section__photo-select {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+}
 /* Tablet Styles */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .hero-header {
+    max-width: 991px;
+  }
+}
 .site-header {
   display: flex;
   justify-content: space-between;
