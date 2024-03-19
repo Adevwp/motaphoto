@@ -3,14 +3,14 @@
     // Récupère l'ID du post passé au template part
     $post_id = $args['post_id']; 
 
-    // Assure-toi que l'ID est valide
+    // Assure-toi que l'ID est valide todo
     if ($post_id) {
         $photo_id = get_field('photo', $post_id); // Utilise get_field avec l'ID du post
         $photo_url = wp_get_attachment_image_url($photo_id, 'full');
         $photo_alt = get_post_meta($photo_id, '_wp_attachment_image_alt', true);
         $reference = get_field('reference', $post_id); // Récupère la référence de la photo
         $categorie_terms = wp_get_post_terms($post_id, 'categorie'); // Récupère les termes de la catégorie
-                ?>
+    ?>
 
         <img class="photo-block__picture" src="<?php echo esc_url($photo_url); ?>" alt="<?php echo esc_attr($photo_alt); ?>">
 
