@@ -1,17 +1,14 @@
 // LOAD MORE PHOTOS
 jQuery(document).ready(function($) {
     const ajaxurl = photo_catalogue_ajax_params.ajaxurl;
-    let page = 2; // Commence à la page 2 car la première page est déjà chargée todo
-console.log(page); // todo supp
+    let page = 2; // Begin at page 2, 1 already load
 
     $('#loadmore-btn').click(function() {
-        console.log("Bouton cliqué"); // todo supp
         const data = {
             'action': 'loadmore_photos',
-            'query': photo_catalogue_ajax_params.posts, // Les paramètres de la requête initiale tot
+            'query': photo_catalogue_ajax_params.posts, // Parameter for the initial
             'page': page
         };
-        console.log("Envoi des données : ", data); // todo supp
 
         $.post(ajaxurl, data, function(response) {
             if(response.success) {
@@ -27,7 +24,6 @@ console.log(page); // todo supp
     });
 });
 
-
 // FILTER PHOTOS
 jQuery(document).ready(function($) {
     $('#photo-category-select, #photo-format-select, #filter-section_date-sort').change(function() {
@@ -35,7 +31,6 @@ jQuery(document).ready(function($) {
         const format = $('#photo-format-select').val();
         const order = $('#filter-section_date-sort').val();
         const ajaxurl = photo_catalogue_ajax_params.ajaxurl;
-
 
         $.ajax({
             url: ajaxurl,

@@ -7,14 +7,14 @@
     <div class="hero-header">
         <div class="hero-header__image">
             <?php
-            $randomPhoto = heroHeader_request_randomPhoto(); // $photoHero = motaphoto_request_photoHero(); todo
+            $randomPhoto = heroHeader_request_randomPhoto(); // 
 
             if ($randomPhoto && is_array($randomPhoto) && !empty($randomPhoto)) {
-                foreach ($randomPhoto as $photo) { // ($photoHero as $photo) todo
+                foreach ($randomPhoto as $photo) { 
                     $image = $photo['img'][0]; 
                     $alt = $photo['alt'];
                     echo '<img class="photo_hero" src="' . esc_url($image) . '" alt="' . esc_attr($alt) . '" >';
-                } // class="image_hero" todo
+                } 
             } else {
                 echo '<p class="noresult">Aucune photo trouvée.</p>';
             }
@@ -60,14 +60,14 @@
 
 <!-- PHOTOS LIST-->
 
-    <section id="photos-list" class="photos-list-container" >      <!-- TODO old thumbnail-container / ou photo-catalogue -->
+    <section id="photos-list" class="photos-list-container" >
         <?php
-            // Arguments de la requête WP_Query pour récupérer les articles de type 'photo' TODO
+            // Argument from WP_Query resquest to get CPT 'photo'
             $args = array(
                 'post_type' => 'photo',
             );
 
-            // Initialiser la requête WP_Query avec les arguments définis TOdo
+            // Initialize WP_Query resquest with argument define before
             $query = new WP_Query( $args );
         
             if ($query->have_posts()) {
@@ -86,10 +86,9 @@
     </section>
 
 <!-- BUTTON LOAD MORE-->
-    <div class="loadmore-photo-button">    <!-- // todo class="photo-catalogue-boutton" -->
+    <div class="loadmore-photo-button">
         <button id="loadmore-btn" type="button">Charger plus</button> 
     </div>
-
 
 </main>
 

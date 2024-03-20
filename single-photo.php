@@ -12,10 +12,10 @@
 ?>
 
     <div class="single-photo">
-        <!-- TODO À METTRE À JOUR SECTION ISINGLE PHOTO INFO -->      
-        <section class="single-photo-info">   <!-- TODO À METTRE À JOUR single-photo-container -->  
+        <!-- SINGLE PHOTO SECTION-->
+        <section class="single-photo-info">    
             <!-- INFORMATION ABOUT SINGLE PHOTO-->
-            <div class="single-photo-info_content"> <!-- TODO À METTRE À JOUR single-photo__info-->  
+            <div class="single-photo-info_content">  
 
                 <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
                         
@@ -62,17 +62,17 @@
             </div>
 
             <!-- SINGLE PHOTO-->
-            <div class="single-photo-info__image"> <!-- TODO À METTRE À JOUR single-photo__image -->  
+            <div class="single-photo-info__image">  
 
                 <?php 
                     if ($photo_id) {
-                        // Utilise l'ID pour obtenir l'URL de l'image
+                        // Use ID to have url picture
                         $photo_url = wp_get_attachment_image_url($photo_id, 'full');
 
-                        // Récupère le texte alternatif
+                        // Get the alt of the picture
                         $photo_alt = get_post_meta($photo_id, '_wp_attachment_image_alt', true);
 
-                        // Affiche l'image
+                        // Show picture
                         echo '<img src="' . esc_url($photo_url) . '" alt="' . esc_attr($photo_alt) . '" />';
                 }?>
 
@@ -81,15 +81,17 @@
         
         </section>
 
-        <!-- TODO À METTRE À JOUR SECTION INTERACTION -->  
+        <!-- SECTION INTERACTION -->  
         <section class="single-photo-interaction"> 
-            <div class="single-photo-interaction__contact"> <!-- TODO .interesse -->
-                <p> Cette photo vous intéresse?</p><!-- TODO #single-contact -->
+            <!-- Contact interaction -->
+            <div class="single-photo-interaction__contact"> 
+                <p> Cette photo vous intéresse?</p>
                 <button id="single-photo-interaction__contact_btn" type="button">Contact</button>
             </div>
-            <div class="single-photo-interaction__navigation"> <!-- TODO .navigation -->
-                    <div class="navigation-card-photo"> <!-- TODO .miniature-photo - class non utilisee on lma garde ? -->
-                        <!-- TODO .miniature-prev -->    
+            <!-- prev and Next picture interection -->
+            <div class="single-photo-interaction__navigation"> 
+                    <div class="navigation-card-photo">  
+                        <!-- Prev picture -->
                         <?php $prev_photo = motaphoto_get_adjacent_photo(get_the_ID(), 'prev'); ?>
 
                         <?php if ($prev_photo): ?>
@@ -98,8 +100,7 @@
                             </a> 
                         <?php endif; ?>
                     
-                        <!-- TODO .miniature-next -->
-
+                        <!-- Next picture -->
                         <?php $next_photo = motaphoto_get_adjacent_photo(get_the_ID(), 'next'); ?>
                         <?php if ($next_photo): ?>
                             <a href="<?php echo $next_photo['url']; ?>">
@@ -108,8 +109,9 @@
                         <?php endif; ?>
                     </div>
                     
-                    <div class="navigation-card-arrow"> <!-- TODO .miniature-fleche -->
-                        <!-- TODO .arrow-prev -->
+                    <!-- Arrow next and prev -->
+                    <div class="navigation-card-arrow"> 
+                        <!-- Prev arrow -->
                         <?php $prev_photo = motaphoto_get_adjacent_photo(get_the_ID(), 'prev'); ?>
                         <?php if ($prev_photo): ?>
                             <a href="<?php echo $prev_photo['url']; ?>">
@@ -117,7 +119,7 @@
                             </a> 
                         <?php endif; ?> 
                         
-                        <!-- TODO .arrow-next -->
+                        <!-- Next arrow -->
                         <?php $next_photo = motaphoto_get_adjacent_photo(get_the_ID(), 'next'); ?>
                         <?php if ($next_photo): ?>
                             <a href="<?php echo $next_photo['url']; ?>">
@@ -128,7 +130,7 @@
             </div>
         </section>
             
-        <!-- TODO SECTION RELATED PHOTOS -->
+        <!-- SECTION RELATED PHOTOS -->
         <section class="related-photos-section">
             <h3>VOUS AIMEREZ AUSSI</h3>
             <div class="related-photos">

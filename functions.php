@@ -1,5 +1,4 @@
 <?php 
-
 // Add support for featured images
 add_theme_support( 'post-thumbnails' );
 
@@ -33,8 +32,7 @@ register_nav_menus( array(
   ) 
 );
 
-// WP-Query For Single-Photo Navigation Interaction  TODO corriger
-
+// WP-Query For Single-Photo Navigation Interaction  
 function motaphoto_get_adjacent_photo($current_post_id, $direction = 'next') {
   $args = [
       'post_type'      => 'photo',
@@ -42,7 +40,7 @@ function motaphoto_get_adjacent_photo($current_post_id, $direction = 'next') {
       'post_status'    => 'publish',
       'orderby'        => 'date',
       'order'          => $direction === 'next' ? 'ASC' : 'DESC',
-      'post__not_in'   => [$current_post_id], // Exclure le post actuel todo
+      'post__not_in'   => [$current_post_id], // Exclude actual post
       'meta_query'     => [
           [
               'key'     => 'photo',
@@ -61,11 +59,11 @@ function motaphoto_get_adjacent_photo($current_post_id, $direction = 'next') {
   $query = new WP_Query($args);
 
   if (!$query->have_posts() && $direction === 'next') {
-      // Si aucune photo suivante, retourner à la première photo todo
+      // If no next picture, go back to the first one
       $args['date_query'] = ['after' => '1900-01-01'];
       $query = new WP_Query($args);
   } elseif (!$query->have_posts() && $direction === 'prev') {
-      // Si aucune photo précédente, aller à la dernière photo todo 
+      // If no previous picture, go back to the last 
       unset($args['date_query']);
       $args['order'] = 'DESC';
       $query = new WP_Query($args);
@@ -83,10 +81,7 @@ function motaphoto_get_adjacent_photo($current_post_id, $direction = 'next') {
   return false;
 }
 
-
-
 // WP-Query For random Hero Header Photo 
-
 function heroHeader_request_randomPhoto() 
 {
     $args = array (
@@ -120,7 +115,6 @@ function heroHeader_request_randomPhoto()
     return $response;
 }
 
-
 // AJAX to load more photos on Frontpage.php
 function loadmore_photos_handler() {
   if (!isset($_POST['query']) || !isset($_POST['page'])) { //Verify if query and page exist in array
@@ -138,15 +132,15 @@ function loadmore_photos_handler() {
   $query = new WP_Query($args);
 
   if ($query->have_posts()) {
-    ob_start(); // Démarre la temporisation de sortie ou buffer todo 
+    ob_start(); // Begin temporisation/buffer 
     while ($query->have_posts()) {
         $query->the_post();
         get_template_part('template-parts/photo-block', null, array('post_id' => get_the_ID()));
     }
-    $content = ob_get_clean(); // Stocke le contenu capturé puis efface le tampon ou Récupère et nettoie le buffer todo
-    wp_send_json_success(array('content' => $content)); // Envoie une réponse JSON positive avec le contenu todo 
+    $content = ob_get_clean(); // Stoc content then clean temporitsation/buffer
+    wp_send_json_success(array('content' => $content)); // Send success JSON response with content 
 } else {
-    wp_send_json_error(array('message' => 'Toutes les photos ont été chargées.')); // Envoie une réponse JSON négative avec un message
+    wp_send_json_error(array('message' => 'Toutes les photos ont été chargées.')); // Send negative JSON respons
   }
 
 
@@ -156,9 +150,7 @@ function loadmore_photos_handler() {
 add_action('wp_ajax_loadmore_photos', 'loadmore_photos_handler');
 add_action('wp_ajax_nopriv_loadmore_photos', 'loadmore_photos_handler');
 
-
 // AJAX TO FILTER PHOTO
-
 function filter_photos_handler() {
   $category = isset($_POST['category']) ? sanitize_text_field($_POST['category']) : '';
   $format = isset($_POST['format']) ? sanitize_text_field($_POST['format']) : '';
@@ -166,7 +158,7 @@ function filter_photos_handler() {
 
   $args = [
       'post_type' => 'photo',
-      'posts_per_page' => -1, // ou toute autre limite
+      'posts_per_page' => -1,
       'orderby' => 'date',
       'order' => $order,
       'tax_query' => []
@@ -209,10 +201,6 @@ function filter_photos_handler() {
 add_action('wp_ajax_filter_photos', 'filter_photos_handler');
 add_action('wp_ajax_nopriv_filter_photos', 'filter_photos_handler');
 
-
-
-
-/* TODO mettre au propore option optmisation Green code */
 // Optimize page loading by disabling autoloading of global styles and SVG filters
 function custom_wp_remove_global_css() {
   remove_action( 'wp_enqueue_scripts', 'wp_enqueue_global_styles' );
