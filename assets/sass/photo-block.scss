@@ -93,3 +93,15 @@
     }
 
 }
+
+/*** Media Queries - RESPONSIVE ***/
+    /* Mobile Styles */
+@media only screen and (max-width: 767px) { 
+    .photo-block {
+        .photo-overlay {
+            .photo-fullscreen {
+                visibility: hidden;
+            }
+        }
+    }
+}

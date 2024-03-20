@@ -67,7 +67,7 @@
 
 /*** Media Queries - RESPONSIVE ***/
     /* Mobile Styles */
-@media (max-width: 767px) {
+@media only screen and (max-width: 767px) {
     .site-header {
         height: 72px;
         position: sticky;

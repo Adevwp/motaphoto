@@ -34,8 +34,9 @@ jQuery(document).ready(function($) {
     }
 
     // On click on icon fullscreen open Lightbox
-    $('.photo-block').on('click', '.photo-fullscreen', function() {
-        const index = $(this).closest('.photo-block').index();
+    $(document).on('click', '.photo-block .photo-fullscreen', function() {
+        // Take document to evit conflict on frontpage with over action
+        const index = $(this).closest('.photo-block').index('.photo-block');
         displayLightbox(index);
     });
 
